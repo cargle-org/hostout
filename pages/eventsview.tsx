@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import {
     faAngleRight,
     faBell,
@@ -14,6 +15,11 @@ import Link from "next/link";
 const Eventsview = () => {
   return (
     <div>
+      <Head>
+        <title>Hostout</title>
+        <meta name="description" content="Host and find events near you" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <div className="nv-bar">
       <div className="nv-form">
         <input placeholder="Search events" />

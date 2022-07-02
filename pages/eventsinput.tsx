@@ -1,9 +1,16 @@
+
+import Head from 'next/head'
 import Navbar from '../Components/Navbar'
 import Experience from '../Components/Experience'
 import Footer from '../Components/Footer'
 export const Eventsinput = () => {
   return (
     <div>
+      <Head>
+        <title>Hostout</title>
+        <meta name="description" content="Host and find events near you" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <Navbar />
    
     <div className='form-input'>

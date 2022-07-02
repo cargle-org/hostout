@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "../Components/Cards";
@@ -9,6 +10,11 @@ import Past from "../Components/Past";
 const Eventspage = () => {
   return (
     <div>
+      <Head>
+        <title>Hostout</title>
+        <meta name="description" content="Host and find events near you" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <Navbar />
     <div className='menu-display'>
     <h2>All</h2>
