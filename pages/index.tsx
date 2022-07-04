@@ -8,6 +8,7 @@ import HowToAttend from '../Components/How-to-attend'
 import About from '../Components/About-hostout'
 import Experience from '../Components/Experience'
 import Footer from '../Components/Footer'
+import Link from 'next/link'
 const Home: NextPage = () => {
   return (
     <div >
@@ -20,7 +21,7 @@ const Home: NextPage = () => {
         <Navbar />
         <Homehead />
         <div className='about1'>
-          <div id='card-head'><h2>Popular events inspired by people’s browsing</h2> <a>view all</a></div>
+          <div id='card-head'><h2>Popular events inspired by people’s browsing</h2> <Link href='/eventspage'><a>view all</a></Link></div>
           <div className='card-container'>
             <Card />
             <Card />

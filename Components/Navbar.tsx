@@ -1,7 +1,7 @@
 import { faAngleDown, faBell, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-
+import Link from "next/link";
 
 
  const Navbar = () => {
@@ -21,19 +21,19 @@ import Image from "next/image";
       </li>
       <li><a><FontAwesomeIcon icon={faBell} /></a></li>
       <li>
-        <a href="#" className="nav-btn">
+      <Link href='/eventsinput'><a  className="nav-btn">
           Host an Event
-        </a>
+        </a></Link>
       </li>
       <li>
-        <a href="#" className="nav-option">
+        <Link href='/eventspage'><a href="#" className="nav-option">
           Hangouts
-        </a>
+        </a></Link>
       </li>
       <li>
-        <a href="#" className="nav-option">
+        <Link href='/eventspage'><a href="#" className="nav-option">
           Trending
-        </a>
+        </a></Link>
       </li>
     </ul>
   </div>
