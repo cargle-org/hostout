@@ -2,3 +2,13 @@ the homepage is te index.js
 note in the component section you need to put .tsx 
 apparently global css isnt available in the index
 to make the icons fit i entered some text in the _app.tsx file from font awesome
+
+
+<div className="hp-btn">
+            <a href="#" className="flexbx-1-btn">
+              Explore events
+            </a>
+            <a href="#" className="flexbx-1-btn2">
+              Learn more
+            </a>
+          </div>
