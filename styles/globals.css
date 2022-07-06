@@ -291,13 +291,15 @@ margin-bottom: 15px;
 display: flex;
 justify-content: center;
 }
-.tag {
+.container-tag .tag {
   
   padding: 6px 15px;
   background: #00BED133;
   margin-left: 5px;
   margin-right: 5px;
+ 
   border-radius: 15px;
+
 }
 .tag p{
   color: black;
@@ -982,17 +984,17 @@ margin-top: 10px;
 .flexbx-1{
   height: 300px;
   width: 50%;
-  display: ;
   justify-content: center;
   align-items: center;
-  margin: 100px 20px 100px 20px;
+  margin: 50px 20px 80px 20px;
 }
 .flexbx-1 h1{
   font-size: 50px;
   color: white;
 }
-.flexbx-1 p{
-  margin: 50px 0;
+.flexbx-1p{
+padding-top: 25px;
+padding-bottom: 10px;
   color: white;
 }
 
@@ -1293,3 +1295,44 @@ margin-top: 10px;
   color: #030101;
 }
 /*-------Related events end -------*/
+
+#head{
+  text-align: center;
+  color: blue;
+}
+.clock-container{
+  margin-top: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
+.item{ 
+ height:100px;
+ width: 100px;
+ margin: 10px;
+ border-radius: 50%;
+ text-align: center;
+
+}
+item h1{
+  font-size: 20px;
+}
+.item p {
+  margin-top: 10px;
+  color: white;
+}
+.days {
+  background: #00BED133;
+
+}
+.hours{
+  background: #00BED133;
+}
+.minutes {
+  background:#00BED133;
+}
+.seconds{
+  background: #00BED133;
+}

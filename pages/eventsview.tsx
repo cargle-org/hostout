@@ -11,8 +11,46 @@ import Experience from "../Components/Experience";
 import Picture from "../Components/Picture";
 import RelatedPictures from "../Components/RelatedPictures";
 import Link from "next/link";
+import Tag from '../Components/Tag';
+import { useEffect, useState } from 'react';
 
 const Eventsview = () => {
+
+  const [days, setDays] = useState(0)
+  const [hours, setHours] = useState(0)
+  const [minutes, setMinutes] = useState(0)
+  const [seconds, setSeconds] = useState(0)
+
+  useEffect(() => {
+    const target = new Date("12/31/2022 23:59:59");
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = target.getTime() - now.getTime();
+
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      setDays(d);
+
+      const h = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      setHours(h);
+
+
+      const m = Math.floor(
+        (difference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      setMinutes(m);
+
+      const s = Math.floor(
+        (difference % (1000 * 60)) / 1000);
+      setSeconds(s);
+
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [])
+
   return (
     <div>
       <Head>
@@ -47,7 +85,7 @@ const Eventsview = () => {
             </a>
           </li>
           <li>
-           <Link href='/eventsinput'><a className="nav-btn">
+            <Link href='/eventsinput'><a className="nav-btn">
               Host an Event
             </a></Link>
           </li>
@@ -70,18 +108,32 @@ const Eventsview = () => {
       <div className="flexbx-container">
         <div className="flexbx-1 flexbx-item">
           <h1>Chilling with wizkid at Oniru Beach</h1>
-          <p>
+          <p className='flexbx-1p' >
             Host or Register an event and hangout, meet new people, have fun and
             enjoy every bit of your time.
           </p>
-          <div className="hp-btn">
-            <a href="#" className="flexbx-1-btn">
-              Explore events
-            </a>
-            <a href="#" className="flexbx-1-btn2">
-              Learn more
-            </a>
+          <Tag />
+          <div className="clock-container">
+            <div className="days item">
+              <h1 id="d">{days}</h1>
+              <p>days</p>
+            </div>
+            <div className="hours item">
+              <h1 id="h">{hours}</h1>
+              <p>hours</p>
+            </div>
+            <div className="minutes item">
+              <h1 id="min">{minutes}</h1>
+              <p>minutes</p>
+            </div>
+            <div className="seconds item">
+              <h1 id="sec">{seconds}</h1>
+              <p>seconds</p>
+            </div>
           </div>
+
+
+
         </div>
         <div className="flexbx-2"></div>
         <div></div>
