@@ -1037,7 +1037,25 @@ padding-bottom: 10px;
 
 /*-------Homepage header ends here -------*/
 
-
+/*-------Etag starts here-------*/
+.container-e-tag{
+  display: flex;
+  justify-content: center;
+  }
+  .container-e-tag .e-tag {
+    
+    padding: 10px 25px;
+    background: #00BED133;
+    margin-left: 10px;
+    margin-right: 10px;
+   
+    border-radius: 15px;
+  
+  }
+  .e-tag p{
+    color: white;
+  }
+/*-------Etag  ends here -------*/
 
 /*-------About header start -------*/
 

@@ -13,6 +13,7 @@ import RelatedPictures from "../Components/RelatedPictures";
 import Link from "next/link";
 import Tag from '../Components/Tag';
 import { useEffect, useState } from 'react';
+import Etag from '../Components/etag';
 
 const Eventsview = () => {
 
@@ -112,7 +113,7 @@ const Eventsview = () => {
             Host or Register an event and hangout, meet new people, have fun and
             enjoy every bit of your time.
           </p>
-          <Tag />
+          <Etag />
           <div className="clock-container">
             <div className="days item">
               <h1 id="d">{days}</h1>
