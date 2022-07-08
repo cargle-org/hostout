@@ -263,7 +263,7 @@ const Eventsview = () => {
         <form action=''>
           <div className='form-event-title'>
             <h3>Full name here *</h3>
-            <input type='text' placeholder='Enter Full name here *' />
+            <input type='text' placeholder='Enter Full name here *' required />
           </div>
           <div className='persons-input-info'>
             <h3>How many of you are coming?</h3>
@@ -276,7 +276,7 @@ const Eventsview = () => {
           <div>
             <h3> You would love to take something, what’ is that? (optional)</h3>
             <div className='input-act-menu'>
-              <input type="text" placeholder="Select menu" />
+              <input type="text" placeholder="Select menu" required />
               <select id="act-items">
                 <option value="">per  go / quantity </option>
                 <option value="">CODM</option>
@@ -284,7 +284,7 @@ const Eventsview = () => {
                 <option value="">Dancing </option>
               </select>
               <span>Amount</span>
-              <input type="text" placeholder="enter price" />
+              <input type="text" placeholder="enter price" required />
               <button >Add</button>
 
             </div>
@@ -292,15 +292,15 @@ const Eventsview = () => {
           <div>
             <h3>Not just food, choose Games&activities and have fun (optional)</h3>
             <div className='input-act-menu'>
-              <input type="text" placeholder="select  activity here" />
-              <select id="act-items">
+              <input type="text" placeholder="select  activity here" required />
+              <select id="act-items" required>
                 <option value="">per  go / quantity </option>
                 <option value="">CODM</option>
                 <option value="">DEFCON</option>
                 <option value="">Dancing </option>
               </select>
               <span>Amount</span>
-              <input type="text" placeholder="enter price" />
+              <input type="text" placeholder="enter price"  required/>
               <button >Add</button>
 
             </div>
@@ -327,7 +327,7 @@ const Eventsview = () => {
             </div>
           </div>
           <div id='input-event-btn'>
-            <button className='input-event-button' >Proceed to Payments</button>
+            <button className='input-event-button'  type='submit'>Proceed to Payments</button>
           </div>
         </form>
       </div>

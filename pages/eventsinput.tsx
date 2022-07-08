@@ -20,13 +20,13 @@ export const Eventsinput = () => {
       <form action=''>
         <div className='form-event-title'>
         <h3>Enter Event*</h3>
-        <input type='text'  placeholder='Enter Event Title'/>
+        <input type='text'  placeholder='Enter Event Title' required/>
         </div>
        { /*-- the price and catergory is flexed---*/}
        <div className='input-container'>
        <div className='form-event-category'>
         <h3>Select a catergory</h3>
-        <select id="items">
+        <select id="items" required>
           <option value="">select a catergory </option>
            <option value="">Tech</option>
            <option value="">Linux</option>
@@ -35,7 +35,7 @@ export const Eventsinput = () => {
         </div>
         <div className='form-event-price'>
         <h3>Event registration price</h3>
-        <input type='text' placeholder='Amount' />
+        <input type='text' placeholder='Amount' required/>
         </div>
        </div>
         <div className='form-event-description'>
@@ -45,13 +45,13 @@ export const Eventsinput = () => {
         <div className='person-container-info'>
           <h3>Add tags to an event</h3>
           <div className='person-name-info'>
-            <input type="text" placeholder="Enter menu name"/>
+            <input type="text" placeholder="Enter menu name" required/>
             <button >Add</button>
           </div>
         </div>
         <div className='persons-input-info'>
           <h3>How many persons per account</h3>
-          <div id='persons-container'>
+          <div id='persons-container' >
           <input type="radio" name="persons" value="" /> <span>The Account holder</span>
           <input type="radio" name="persons" value="" />  <span>The holder and a friend</span>
           <input type="radio" name="persons" value="" />  <span> More than three people</span>
@@ -60,15 +60,15 @@ export const Eventsinput = () => {
         <div>
           <h3>Add the availabe list of food menu</h3>
           <div className='input-food-menu'>
-          <input type="text" placeholder="enter item here"/> 
-          <select id="food-items">
+          <input type="text" placeholder="enter item here" required/> 
+          <select id="food-items" required>
           <option value="">per quantity </option>
            <option value="">rice</option>
            <option value="">fish</option>
            <option value="">swallow</option>
            </select> 
              <span>Amount</span>
-               <input type="text" placeholder="enter price"/>
+               <input type="text" placeholder="enter price" required/>
                 <button >Add</button>
 
           </div>
@@ -79,8 +79,8 @@ export const Eventsinput = () => {
         <div>
           <h3>Add the availabe lists of activities</h3>
           <div className='input-act-menu'>
-          <input type="text" placeholder="enter activity here"/> 
-          <select id="act-items">
+          <input type="text" placeholder="enter activity here" required/> 
+          <select id="act-items" required>
           <option value="">per  go / quantity </option>
            <option value="">CODM</option>
            <option value="">DEFCON</option>
@@ -102,7 +102,7 @@ export const Eventsinput = () => {
           <input type="file"  placeholder='insert flyer / image'/> <span>Attach image files</span>
         </div>
         <div id='input-event-btn'>
-        <button className='input-event-button' >Create Event</button>
+        <button className='input-event-button' type='submit' >Create Event</button>
         </div>
 
       </form>  
