@@ -779,6 +779,7 @@ outline: none;
 
 .input-food-menu span {
   margin: 0 20px 0 20px;
+ 
 }
 .input-food-menu button {
   height: 40px;
@@ -860,6 +861,16 @@ outline: none;
  display: flex;
  justify-content: center;
  padding: 60px 0 60px 0;
+}
+
+.formError{
+  padding: 5px 0 5px 5px;
+  width: 250px;
+  display: block;
+  background-color: #E97451;
+  color: #555555;
+  border-radius: 5px;
+  margin: -10px 0 10px 0;
 }
 /*------event forms end-----*/
 /*------Navigation bar starts here-----*/
