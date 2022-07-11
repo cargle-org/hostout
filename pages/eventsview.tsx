@@ -14,8 +14,22 @@ import Link from "next/link";
 import Tag from '../Components/Tag';
 import { useEffect, useState } from 'react';
 import Etag from '../Components/etag';
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+
+interface FormInputs {
+  singleErrorInput: string
+}
+
 
 const Eventsview = () => {
+
+const { register ,formState: { errors }, handleSubmit } = useForm();
+
+const onSubmit = (data: FormInputs) => {
+  alert(JSON.stringify(data));
+}
+
 
   const [days, setDays] = useState(0)
   const [hours, setHours] = useState(0)
@@ -260,39 +274,39 @@ const Eventsview = () => {
       </div>
 
       <div className="form-input">
-        <form action=''>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form-event-title'>
             <h3>Full name here *</h3>
-            <input type='text' placeholder='Enter Full name here *' required />
+            <input
+           {...register("formTitle", { required: "fill this field" })}
+            type='text'
+             placeholder='Enter Full name here *'
+               />
+                <ErrorMessage
+                errors={errors}
+                name="formTitle"
+                render={({ message }) => <p className='formError'>{message}</p>}
+              />
           </div>
           <div className='persons-input-info'>
             <h3>How many of you are coming?</h3>
             <div id='persons-container'>
-              <input type="radio" name="persons" value="" /> <span>I’m coming Alone</span>
-              <input type="radio" name="persons" value="" />  <span>No, I’m booking for a friend</span>
-              <input type="radio" name="persons" value="" />  <span> No, We are</span>
+              <input type="radio" name="persons" required value="" /> <span>I’m coming Alone</span>
+              <input type="radio" name="persons" required value="" />  <span>No, I’m booking for a friend</span>
+              <input type="radio" name="persons" required value="" />  <span> No, We are</span>
             </div>
           </div>
           <div>
             <h3> You would love to take something, what’ is that? (optional)</h3>
             <div className='input-act-menu'>
-              <input type="text" placeholder="Select menu" required />
-              <select id="act-items">
-                <option value="">per  go / quantity </option>
-                <option value="">CODM</option>
-                <option value="">DEFCON</option>
-                <option value="">Dancing </option>
-              </select>
-              <span>Amount</span>
-              <input type="text" placeholder="enter price" required />
-              <button >Add</button>
-
-            </div>
-          </div>
-          <div>
-            <h3>Not just food, choose Games&activities and have fun (optional)</h3>
-            <div className='input-act-menu'>
-              <input type="text" placeholder="select  activity here" required />
+              <input type="text"
+               placeholder="Select menu"
+               {...register("SelectMenu", { required: "fill this field" })}/>
+               <ErrorMessage
+                errors={errors}
+                name="SelectMenu"
+                render={({ message }) => <p className='formError'>{message}</p>}
+              />
               <select id="act-items" required>
                 <option value="">per  go / quantity </option>
                 <option value="">CODM</option>
@@ -300,7 +314,44 @@ const Eventsview = () => {
                 <option value="">Dancing </option>
               </select>
               <span>Amount</span>
-              <input type="text" placeholder="enter price"  required/>
+              <input type="text"
+               placeholder="enter price"
+               {...register("EnterPrice", { required: "fill this field" })}/>
+               <ErrorMessage
+                errors={errors}
+                name="EnterPrice"
+                render={({ message }) => <p className='formError'>{message}</p>}
+              />
+              <button >Add</button>
+
+            </div>
+          </div>
+          <div>
+            <h3>Not just food, choose Games&activities and have fun (optional)</h3>
+            <div className='input-act-menu'>
+              <input type="text" 
+              placeholder="select  activity here"
+              {...register("SelectActivity", { required: "fill this field" })}/>
+              <ErrorMessage
+                errors={errors}
+                name="SelectActivity"
+                render={({ message }) => <p className='formError'>{message}</p>}
+              />
+              <select id="act-items" required>
+                <option value="">per  go / quantity </option>
+                <option value="">CODM</option>
+                <option value="">DEFCON</option>
+                <option value="">Dancing </option>
+              </select>
+              <span>Amount</span>
+              <input type="text"
+               placeholder="enter price" 
+               {...register("enterPrice", { required: "fill this field" })} />
+                             <ErrorMessage
+                errors={errors}
+                name="enterPrice"
+                render={({ message }) => <p className='formError'>{message}</p>}
+              />
               <button >Add</button>
 
             </div>
@@ -309,15 +360,23 @@ const Eventsview = () => {
           <div className='persons-input-info'>
             <h3>Updating you about the event is important, how do you want to get update?</h3>
             <div id='persons-container'>
-              <input type="radio" name="persons" value="" /> <span>Email Address</span>
-              <input type="radio" name="persons" value="" />  <span>Phone number</span>
-              <input type="radio" name="persons" value="" />  <span> Both</span>
+              <input type="radio" name="person" required value="" /> <span>Email Address</span>
+              <input type="radio" name="person" required value="" />  <span>Phone number</span>
+              <input type="radio" name="person" required value="" />  <span> Both</span>
             </div>
           </div>
 
           <div className='event-location-description'>
             <h3>That’s not all, you may want to ask the host for a special request *</h3>
-            <textarea rows="5" type='text' placeholder='Enter your description here' />
+            <textarea rows="5" 
+            type='text'  
+            placeholder='Enter your description here'
+            {...register("formDescription", { required: "fill this field" })} />
+             <ErrorMessage
+                errors={errors}
+                name="formDescription"
+                render={({ message }) => <p className='formError'>{message}</p>}
+              />
           </div>
           <div className="events-total-pay">
             <span>Total</span>

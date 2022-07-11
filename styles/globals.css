@@ -75,7 +75,6 @@ margin-right: 4px;
 
 .ul-li {
   list-style: none;
-  background-color: ;
   overflow: hidden ;
   top: 21.25%;
   bottom: 21.25%;
@@ -142,7 +141,6 @@ margin-top: 10px;
   height: 300px;
   width: 50%;
   background-color: #F5F7F7;
-  display: ;
   justify-content: center;
   align-items: center;
   margin: 100px 20px 100px 20px;
@@ -245,9 +243,7 @@ margin-top: 10px;
   background-image: url('../public/happy-woman-in-nature-at-sunset.jpg');
   overflow: hidden;
 }
-.card-img{
-  
-}
+
 .card-title{
 text-align:  center;
 margin-top: 15px;
@@ -269,9 +265,7 @@ margin-bottom: 15px;
   margin-bottom: 20px;
   margin-left: 10px;
 }
-.card-price a {
-  color: ;
-}
+
 .card p{
   color: #00BED1;
 }
@@ -725,9 +719,7 @@ margin: 10px 0 10px 0;
 outline: none;
 }
 
-.person-container-info{
 
-}
 .person-name-info{
   padding: 0 0 60px 0;
 }
@@ -930,7 +922,6 @@ margin-right: 4px;
 
 .ul-li {
   list-style: none;
-  background-color: ;
   overflow: hidden ;
   top: 21.25%;
   bottom: 21.25%;

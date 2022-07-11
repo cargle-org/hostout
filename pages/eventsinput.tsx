@@ -64,7 +64,7 @@ export const Eventsinput = () => {
             <div className='form-event-price'>
               <h3>Event registration price</h3>
               <input
-                {...register("amount", { required: "fill this field" })}
+                {...register("amount", { required: "fill this field(₦)" })}
                 type='text'
                 placeholder='Amount' />
               <ErrorMessage
@@ -133,7 +133,7 @@ export const Eventsinput = () => {
               </select>
               <span>Amount</span>
               <input
-                {...register("enterPrice", { required:"input amount" })}
+                {...register("enterPrice", { required:"input amount(₦)" })}
                 type="text"
                 placeholder="enter price"
                  />
@@ -170,7 +170,7 @@ export const Eventsinput = () => {
               </select>
               <span>Amount</span>
               <input
-                {...register("enterAmount", { required: "add amount" })}
+                {...register("enterAmount", { required: "add amount(₦)" })}
                 type="text"
                 placeholder="enter price"
                 />
