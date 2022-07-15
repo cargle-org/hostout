@@ -10,6 +10,7 @@ import Tag from './Tag';
             src='/A.jpg'
             width={560}
             height={500}
+            alt='image'
         />
         </div>
     <div className='past-title'>
@@ -35,6 +36,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     <div className='past-image'>
@@ -42,6 +44,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     <div className='past-image'>
@@ -49,6 +52,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     <div className='past-image'>
@@ -56,6 +60,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     </div>
@@ -67,6 +72,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={560}
             height={500}
+            alt='image'
         />
         </div>
     <div className='past-title'>
@@ -92,6 +98,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     <div className='past-image'>
@@ -99,6 +106,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     <div className='past-image'>
@@ -106,6 +114,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     <div className='past-image'>
@@ -113,6 +122,7 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatu...</p>
             src='/A.jpg'
             width={120}
             height={120}
+            alt='image'
         />
     </div>
     </div>

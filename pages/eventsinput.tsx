@@ -5,6 +5,7 @@ import Experience from '../Components/Experience'
 import Footer from '../Components/Footer'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message';
+import { text } from 'stream/consumers'
 
 interface FormInputs {
   singleErrorInput: string
@@ -17,7 +18,7 @@ export const Eventsinput = () => {
 
 
 
-  const onSubmit = (data: FormInputs) => {
+  const onSubmit:any = (data: FormInputs) => {
     alert(JSON.stringify(data));
   }
 
@@ -78,8 +79,7 @@ export const Eventsinput = () => {
                <h3>Events description</h3>
               <textarea
                 {...register("description", { required: "fill this field" })}
-                 rows="5"
-                type='text'
+                 rows={5}
                 placeholder='Enter your description here' />
                 <ErrorMessage
                 errors={errors}
@@ -187,8 +187,7 @@ export const Eventsinput = () => {
             <h3>Event Location</h3>
             <textarea
               {...register("enterDescription2", { required: "fill this field" })}
-              rows="5"
-              type='text'
+              rows={5}
               placeholder='Enter your description here'
                />
                <ErrorMessage
@@ -218,7 +217,7 @@ export const Eventsinput = () => {
         </form>
       </div>
       <div id="About-event">
-        <h2>People's experience</h2>
+        <h2>People&apos;s experience</h2>
       </div>
       <div className='about-container'>
         <Experience />

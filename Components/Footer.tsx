@@ -44,7 +44,7 @@ import { faFacebook, faInstagram, faLinkedin, faTiktok, faTwitter } from '@forta
             
                 <p>Subscribe to our new letter ad get updated about future events and activities</p>
                 <input type="text" placeholder="Your Email Address"></input>
-                <form type='submit'>
+                <form >
                 <a href='#' className='footer-btn2'>Submit</a>
 
                 </form>

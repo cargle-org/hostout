@@ -9,6 +9,7 @@ import Image from 'next/image'
         src='/A.jpg'
         width={250}
         height={250}
+        alt='image'
     />  
   </div>
   )

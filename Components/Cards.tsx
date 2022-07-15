@@ -14,6 +14,7 @@ config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatic
       width={264}
       height={182}
       className="card-img"
+      alt='image'
     />
 
      </div>

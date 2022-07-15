@@ -8,6 +8,7 @@ const About = () => {
             src="/avatar.jpeg"
             height={100}
             width={100}
+            alt='image'
         />
     </div>
     <div className='about-title'><h2>About all Hosts</h2></div>

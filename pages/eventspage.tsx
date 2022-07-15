@@ -67,7 +67,7 @@ const Eventspage = () => {
   </div> 
 <Past />
 <div id="About-event">
-    <h2>People's experience</h2>
+    <h2>People&apos;s experience</h2>
   </div>
 <div className='about-container'>
      <Experience />

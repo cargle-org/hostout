@@ -10,6 +10,7 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
             src='/A.jpg'
             width={280}
             height={256}
+            alt='image'
           />
         </div>
         <div className="related-buttom">

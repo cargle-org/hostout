@@ -26,7 +26,7 @@ const Eventsview = () => {
 
 const { register ,formState: { errors }, handleSubmit } = useForm();
 
-const onSubmit = (data: FormInputs) => {
+const onSubmit:any = (data: FormInputs) => {
   alert(JSON.stringify(data));
 }
 
@@ -91,7 +91,7 @@ const onSubmit = (data: FormInputs) => {
           </li>
           <li>
             <div className="nv-img">
-              <Image src="/avatar.jpeg" width={50} height={50} />
+              <Image src="/avatar.jpeg" width={50} height={50}  alt='image'/>
             </div>
           </li>
           <li>
@@ -291,13 +291,13 @@ const onSubmit = (data: FormInputs) => {
           <div className='persons-input-info'>
             <h3>How many of you are coming?</h3>
             <div id='persons-container'>
-              <input type="radio" name="persons" required value="" /> <span>I’m coming Alone</span>
-              <input type="radio" name="persons" required value="" />  <span>No, I’m booking for a friend</span>
+              <input type="radio" name="persons" required value="" /> <span>I&apos;m coming Alone</span>
+              <input type="radio" name="persons" required value="" />  <span>No, I&apos;m booking for a friend</span>
               <input type="radio" name="persons" required value="" />  <span> No, We are</span>
             </div>
           </div>
           <div>
-            <h3> You would love to take something, what’ is that? (optional)</h3>
+            <h3> You would love to take something, what&apos; is that? (optional)</h3>
             <div className='input-act-menu'>
               <input type="text"
                placeholder="Select menu"
@@ -367,9 +367,9 @@ const onSubmit = (data: FormInputs) => {
           </div>
 
           <div className='event-location-description'>
-            <h3>That’s not all, you may want to ask the host for a special request *</h3>
-            <textarea rows="5" 
-            type='text'  
+            <h3>That&apos;s not all, you may want to ask the host for a special request *</h3>
+            <textarea rows={5} 
+             
             placeholder='Enter your description here'
             {...register("formDescription", { required: "fill this field" })} />
              <ErrorMessage

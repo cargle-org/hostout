@@ -16,7 +16,7 @@ import Link from "next/link";
     <li id="angle-down"><a><FontAwesomeIcon icon={faAngleDown} /></a></li>
       <li>
         <div className="nav-img">
-          <Image src="/avatar.jpeg" width={50} height={50} />
+          <Image src="/avatar.jpeg" width={50} height={50} alt='image' />
         </div>
       </li>
       <li><a><FontAwesomeIcon icon={faBell} /></a></li>
