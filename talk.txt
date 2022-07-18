@@ -29,3 +29,7 @@ to make the icons fit i entered some text in the _app.tsx file from font awesome
           }
         })}
       />
+.next/static/
+
+
+/nextjs-pages
