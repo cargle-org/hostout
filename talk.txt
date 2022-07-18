@@ -33,3 +33,6 @@ to make the icons fit i entered some text in the _app.tsx file from font awesome
 
 
 /nextjs-pages
+
+basePath: "/hostout-frontend-tsx-",
+  assetPrefix:"/hostout-frontend-tsx-",
