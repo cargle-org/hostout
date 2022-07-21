@@ -1,6 +1,6 @@
-the homepage is te index.js
+the homepage is the index.js
 note in the component section you need to put .tsx 
-apparently global css isnt available in the index
+apparently global css isnt available in the index( it is )
 to make the icons fit i entered some text in the _app.tsx file from font awesome
 
 
@@ -31,16 +31,12 @@ to make the icons fit i entered some text in the _app.tsx file from font awesome
       />
 .next/static/
 
-
-/nextjs-pages
+this most be added to the live github file to make it work 
 
 basePath: "/hostout-frontend-tsx-",
   assetPrefix:"/hostout-frontend-tsx-",
 
-  ../public/eventsview.png
+  to make the background image work write the path name in this format 
 
-  ../static/eventsview.png
-
-  '/hostout-frontend-tsx-/public/eventsview.png'
-
- 
+  background: url('/the page name /the file name ')
+   for this to work it has to be in the home directory 
