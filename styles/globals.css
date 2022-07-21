@@ -978,7 +978,7 @@ margin-top: 10px;
 /*-------Events page header starts here -------*/
 .flexbx-container{
   padding-top: 70px;
- background: url('/out/eventsview.png');
+ background: url('/eventsview.png');
   margin: 0;
   display: flex;
 }
