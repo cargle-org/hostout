@@ -36,3 +36,5 @@ to make the icons fit i entered some text in the _app.tsx file from font awesome
 
 basePath: "/hostout-frontend-tsx-",
   assetPrefix:"/hostout-frontend-tsx-",
+
+  ../public/eventsview.png
