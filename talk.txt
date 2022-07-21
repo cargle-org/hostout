@@ -42,3 +42,5 @@ basePath: "/hostout-frontend-tsx-",
   ../static/eventsview.png
 
   '/hostout-frontend-tsx-/public/eventsview.png'
+
+ 
