@@ -1356,3 +1356,63 @@ item h1{
 .seconds{
   background: #00BED133;
 }
+/* ---------- the Register form style -----------*/
+
+.login-body{
+  background: #edf1f1;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login-div {
+  width: 360px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+}
+.success-message {
+  font-family: "Roboto", sans-serif;
+  background-color: #3f89f8;
+  padding: 15px;
+  color: white;
+}
+.error-message {
+    font-family: "Roboto", sans-serif;
+    background-color: #3f89f8;
+    padding: 15px;
+    color: white;
+  
+}
+
+.login-input {
+  background: #f2f2f2;
+  margin: 10px 0 10px 0;
+  padding: 15px;
+  font-size: 16px;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+}
+.error {
+  color: red;
+  font-size: 14px;
+}
+.login-button {
+  background: #131034;
+  border-radius: 20px;
+  color: white;
+  margin: 10px 0 10px 0;
+  padding: 15px 145px;
+  font-size: 16px;
+  border: 0;
+}
+.login-button:disabled {
+  cursor: default;
+}
+.login-label{
+  color: #00BED1;
+}
+
+/* ---------- the Register form style end -----------*/

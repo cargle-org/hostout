@@ -31,7 +31,7 @@ to make the icons fit i entered some text in the _app.tsx file from font awesome
       />
 .next/static/
 
-this most be added to the live github file to make it work 
+this must be added to the live github file to make it work 
 
 basePath: "/hostout-frontend-tsx-",
   assetPrefix:"/hostout-frontend-tsx-",
