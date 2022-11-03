@@ -1,3 +1,8 @@
+// Integration stuff
+import React,{  useContext } from "react";
+import AppContext from "../context/AppContext";
+
+// components
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Navbar from '../Components/Navbar'
@@ -9,7 +14,13 @@ import About from '../Components/About-hostout'
 import Experience from '../Components/Experience'
 import Footer from '../Components/Footer'
 import Link from 'next/link'
+
+
+
 const Home: NextPage = () => {
+
+  const {topbarTitle} = useContext(AppContext);
+
   return (
     <div >
       <Head>

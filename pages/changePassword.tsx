@@ -1,62 +1,84 @@
-import React, {  useState } from "react";
-import axios , {  Axios } from "axios";
-
-
-
+import React, {  useState, useContext } from "react";
+import AppContext from "../context/AppContext";
+import axios from "axios";
+import { success, error } from "../helpers/Alert";
 
 const ChangePassword = () => {
     const url = "https://event-manager001.herokuapp.com/api/v1/auth/change-password";
-    const [values , setValues] = useState({
+
+    const {authLoading, setAuthLoading} = useContext(AppContext)
+
+    const [changePassword, setChangePassword] = useState({
         old_password:"",
         new_password:"",
-    });
-    const [submitted , setSubmitted] = useState(false);
-    const [valid , setValid] = useState(false);
+    })
 
-    const handleOldPasswordInputChange =(event) =>{
-        setValues({...values, old_password : event.target.value})
-    }
+    const onchangeHandler = (e) => {
+        e.persist();
+        setChangePassword((item) => ({
+        ...item,
+        [e.target.name]: e.target.value,
+        }));
+    };
 
-    const handleNewPasswordInputChange = (event) => {
-        setValues({...values, new_password : event.target.value})
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (values.new_password && values.old_password)
+  const submit = async (e) => {
+    e.preventDefault();
+    console.log("changePassword: ", changePassword);
+    try {
+        setAuthLoading(true);
+      const response = await axios.post(
+        "https://event-manager001.herokuapp.com/api/v1/auth/change-password",
+        changePassword,
         {
-            setValid(true);
+          headers: {
+            "content-type": "application/json",
+          },
         }
-        setSubmitted(true);
-        axios.post(url,{
-            old_password:values.old_password,
-            new_password:values.new_password
-        })
-        .then((res) => {console.log(res)})
-        .catch((val) => {console.log(values)})
+      );
+      console.log("🚀 ~ file: changePassword.tsx ~ line 38 ~ submit ~ response", response)
+      setAuthLoading(false);
+      if (response.status === 201) {
+        success(response.data.msg);
+      }
+    } catch (err) {
+      error("Couldn't change password :(");
+      console.log(err);
+      setAuthLoading(false);
     }
+  };
+
+
 
 
     return(
-        <div className="login-body" onSubmit={handleSubmit}>
-            <form className="Login-input">
-                <label htmlFor="oldPassword">Old Password</label>
+        <div className="login-body" >
+            <form className="Login-input" onSubmit={submit}>
+                <label >Old Password</label>
                 <input type="password"
                 className="login-input"
                 name="old_password"
                 placeholder="Enter old Password"
-                value={values.old_password}
-                onChange={handleOldPasswordInputChange} />
+                required
+                defaultValue={changePassword.old_password}
+                onChange={onchangeHandler} />
+
                 <br />
-                <label htmlFor="newPassword">new Password</label>
+
+                <label>new Password</label>
                 <input type="password"
                 className="login-input"
                 name="new_password"
+                required
                 placeholder="Enter new Password"
-                value={values.new_password}
-                onChange={handleNewPasswordInputChange} />
+                defaultValue={changePassword.new_password}
+                onChange={onchangeHandler} />
                 <br />
-                <button className="login-button" type="submit">Change Password</button>
+                {authLoading ? (
+                    <button className="login-button">Loading...</button>
+                ) : (
+                    <button className="login-button" type="submit">Change Password</button>
+                )}
+               
             </form>
 
         </div>

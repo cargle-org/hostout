@@ -1,101 +1,93 @@
-import React,{ useState } from "react"
-import  { Axios } from "axios";
+import type { NextPage } from 'next'
+import React,{ useState, useContext } from "react"
+import  axios from "axios";
+import {success,  error} from "../helpers/Alert";
+import AppContext from '../context/AppContext';
 
-const Register:Nextpage =() =>
+const Register: NextPage =() =>
 {
-    const url = "https://event-manager001.herokuapp.com/api/v1/auth/register";
-    const [values , setValues] =useState({
+
+    const {authLoading, setAuthLoading} = useContext(AppContext)
+
+    const [newUser, setNewUser] = useState({
         name:"",
         email:"",
         password:"",
-    }) ;
-    const  [ submitted , setSubmitted] = useState(false);
-    const [valid , setValid] = useState(false);
-    const axios = require('axios').default;
+    })
 
-    // enables SetValues
-const handleFirstNameInputChange = (event) => {
-    setValues({...values, name: event.target.value})
-}
+    const onchangeHandler = (e) => {
+        e.persist();
+        setNewUser((item) => ({
+        ...item,
+        [e.target.name]: e.target.value,
+        }));
+    };
 
-/*const handleLastNameInputChange = (event) => {
-    setValues({...values, lastname: event.target.value})
-} */
-
-const handleEmailInputChange = (event) => {
-    setValues({...values, email: event.target.value})
-}
-
-const handlePasswordInputChange = (event) => {
-    setValues({...values, password: event.target.value})
-}
-
-// Posts 
-const   handleSubmit = (event) => {
-    event.preventDefault();
-    if(values.name && values.email && values.password ){
-        setValid(true);
+  const submit = async (e) => {
+    e.preventDefault();
+    console.log("newUser: ", newUser);
+    try {
+          setAuthLoading(true);
+      const response = await axios.post(
+        "https://event-manager001.herokuapp.com/api/v1/auth/register",
+        newUser,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+    //   console.log("🚀 ~ file: register.tsx ~ line 38 ~ submit ~ response", response)
+      setAuthLoading(false);
+      if (response.status === 201) {
+        success(response.data.msg);
+      }
+    } catch (err) {
+      error("Couldn't create user");
+      console.log(err);
+      setAuthLoading(false);
     }
-    setSubmitted(true);
-   axios.post(url,{
-    name:values.name,
-    email:values.email,
-    password:values.password
-   })
-   .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  console.log(values)
-}
-
-
-
-
+  };
 
 return(
 <>
 <div className="login-body">
-    <form action="" className="Login-div" onSubmit={handleSubmit}>
-        {/* Uncomment the next line to show the success message */}
-        { submitted && valid ? <div className="success-message">Success! Thank you for registering</div> : <div className="error-message">Register for Hostout</div>}
-        <label htmlFor="name" className="login-label">Name*  </label>
+    <form className="Login-div" onSubmit={submit}>
+        <label className="login-label">Name*  </label>
         <input
         className="login-input"
-        onChange={handleFirstNameInputChange}
+        onChange={onchangeHandler}
         type="text"
-        name="firstname" 
-        placeholder="enter your first name"
-        value={values.name} />
+        required
+        name="name"
+        placeholder="enter your name"
+        defaultValue={newUser.name} />
         <br />
-         {/* Uncomment the next line to show the error message */}
-        {submitted && !values.name ? <span className="error-message">Please enter a name</span> : null} 
-        
-        <br />
-        <label htmlFor="email" className="login-label">Email*  </label>
+        <label className="login-label">Email*  </label>
         <input
         className="login-input"
-        onChange={handleEmailInputChange}
+        onChange={onchangeHandler}
         type="email"
+        required
         name="email"
-        placeholder="youremail@email.com"
-        value={values.email} />
+        placeholder="e.g youremail@email.com"
+        defaultValue={newUser.email} />
         <br />
-         {/* Uncomment the next line to show the error message */}
-         {submitted && !values.email ? <span className="error">Please enter a your email</span>  : null} <br />
-        <label htmlFor="password" className="login-label">Password*  </label>
+        <label className="login-label">Password*  </label>
         <input
-        className="login-input " 
-        onChange={handlePasswordInputChange}
+        className="login-input"
+        name="password"
+        onChange={onchangeHandler}
         type="password" 
-        placeholder="********"
-        value={values.password} />
+        required
+        placeholder="At least 6 characters"
+        defaultValue={newUser.password} />
         <br />
-         {/* Uncomment the next line to show the error message */}
-         {submitted && !values.password ? <span className="error">Please enter a your password</span>   : null}<br />
-        <button className="login-button"type="submit" >submit</button>
+        {authLoading ? (
+            <button className="login-button">Loading...</button>
+        ) : (
+            <button className="login-button" type="submit" >Register</button>
+        )}
     </form>
 </div>
 </>

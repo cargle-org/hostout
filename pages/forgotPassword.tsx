@@ -1,45 +1,69 @@
-import React ,{ useState }from 'react';
+import React ,{ useState, useContext }from 'react';
 import axios , {Axios} from "axios";
+import AppContext from "../context/AppContext";
+import { success, error } from "../helpers/Alert";
 
 function ForgotPassword() {
-    const url = "https://event-manager001.herokuapp.com/api/v1/auth/forgot-password";
-    const [values ,setValues] = useState({
+
+    const {authLoading, setAuthLoading} = useContext(AppContext)
+
+    const [accountEmail, setAccountEmail] = useState({
         email:""
     })
-    const [submitted , setSubmitted] = useState(false);
-    const [valid , setValid] = useState(false);
 
-const handleEmailInputChange = () => {
-    setValues({...values, email: event.target.value})
-}
+    const onchangeHandler = (e) => {
+        e.persist();
+        setAccountEmail((item) => ({
+        ...item,
+        [e.target.name]: e.target.value,
+        }));
+    };
 
-const handleSubmit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    if(values.email ){
-        setValid(true);
+    console.log("accountEmail: ", accountEmail);
+    try {
+        setAuthLoading(true);
+      const response = await axios.post(
+        "https://event-manager001.herokuapp.com/api/v1/auth/forgot-password",
+        accountEmail,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      console.log("🚀 ~ file: forgotPassword.tsx ~ line 37 ~ submit ~ response", response)
+      setAuthLoading(false);
+      if (response.status === 201) {
+        success(response.data.msg);
+      }
+    } catch (err) {
+      error("Couldn't find account, try again");
+      console.log(err);
+      setAuthLoading(false);
     }
-    setSubmitted(true);
-    axios.post(url,{
-        email:values.email
-    })
-    .then((res) => {console.log(res)})
-    .catch((val) => {console.log(values)})
-}
+  };
 
   return (
     <div className='login-body'>
-        <form className="Login-div" onSubmit={handleSubmit}>
-        { submitted && valid ? <div className="success-message">Password reset succesfully check email</div> : <div className="error-message">Input your registered Email</div>}
-            <label htmlFor="email">Email   </label>
+        <form className="Login-div" onSubmit={submit}>
+            <label>Email   </label>
             <input type="email"
             className='login-input'
             name='email'
-            placeholder='Enter your email'
-            value={values.email}
-            onChange={handleEmailInputChange}
+            required
+            placeholder='Enter your account email'
+            defaultValue={accountEmail.email}
+            onChange={onchangeHandler}
              />
             <br />
-            <button className="login-button" type="submit">Reset</button>
+             {authLoading ? (
+            <button className="login-button">Loading...</button>
+        ) : (
+           <button className="login-button" type="submit">Reset</button>
+        )}
+            
         </form>
     </div>
   );

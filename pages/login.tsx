@@ -1,75 +1,87 @@
-import React,{ useState } from "react";
+import React,{ useState, useContext } from "react";
 import axios, { Axios } from "axios";
 import Link from "next/link";
+import AppContext from "../context/AppContext";
+import { success, error } from "../helpers/Alert";
 
 const Login = () => 
 {
-    const url = "https://event-manager001.herokuapp.com/api/v1/auth/login";
-    const [values ,setValues] = useState({
+
+    const {authLoading, setAuthLoading} = useContext(AppContext)
+
+    const [loginDetails, setloginDetails] = useState({
         email:"",
         password:"",
-    });
-    const  [ submitted , setSubmitted] = useState(false);
-    const [valid , setValid] = useState(false);
+    })
 
-    const handleEmailInputChange = (event) => {
-        setValues({...values, email: event.target.value})
-    }
-    const handlePasswordInputChange = (event) => {
-        setValues({...values, password: event.target.value})
-    }
+    const onchangeHandler = (e) => {
+        e.persist();
+        setloginDetails((item) => ({
+        ...item,
+        [e.target.name]: e.target.value,
+        }));
+    };
 
-    const handleSubmit = (e) => 
-    {
-        e.preventDefault();
-        if(values.email && values.password)
+  const submit = async (e) => {
+    e.preventDefault();
+    console.log("loginDetails: ", loginDetails);
+    try {
+        setAuthLoading(true);
+      const response = await axios.post(
+        "https://event-manager001.herokuapp.com/api/v1/auth/login",
+        loginDetails,
         {
-            setValid(true);
+          headers: {
+            "content-type": "application/json",
+          },
         }
-        setSubmitted(true);
-        axios.post(url,{
-            email:values.email,
-            password:values.password
-        })
-        .then((res) =>{ console.log(res)})
-        .catch((val) => {console.log(values)})
+      );
+      console.log("🚀 ~ file: login.tsx ~ line 37 ~ submit ~ response", response)
+      setAuthLoading(false);
+      if (response.status === 201) {
+        success(response.data.msg);
+      }
+    } catch (err) {
+      error("Login failed!");
+      console.log(err);
+      setAuthLoading(false);
     }
+  };
 
 
     return(
         <>
         <div className="login-body">
-            <form className="Login-div" onSubmit={handleSubmit}>
-                {/* Uncomment the next line to show the success message */}
-        { submitted && valid ? <div className="success-message">Success! Thank you for registering</div> : <div className="error-message">Register for Hostout</div>}
-                <label htmlFor="email" className="login-label">Email*</label>
+            <form className="Login-div" onSubmit={submit}>
+
+                <label className="login-label">Email*</label>
                 <input 
                 className="login-input " 
-                type="text"
+                type="email"
                 name="email"
-                placeholder="enter email"
-                value={values.email} 
-                onChange={handleEmailInputChange}/>
+                required
+                placeholder="e.g youremail@email.com"
+                defaultValue={loginDetails.email} 
+                onChange={onchangeHandler}/>
                 <br />
-                {/* Uncomment the next line to show the error message */}
-        {submitted && !values.email ? <span className="error">Please enter an email</span> : null} 
-                <br />
-                <label htmlFor="password" className="login-label">Password*</label>
+                <label  className="login-label">Password*</label>
                 <input
                 className="login-input "  
                 type="password"
                 name="password"
-                placeholder="enter your password"
-                value={values.password}
-                onChange={handlePasswordInputChange} />
-                <br />
-                {/* Uncomment the next line to show the error message */}
-         {submitted && !values.password ? <span className="error">Please enter a your email</span>  : null}
+                required
+                placeholder="At least 6 characters"
+                defaultValue={loginDetails.password}
+                onChange={onchangeHandler} />
                 <br />
                 <p>
                 <Link href='/forgotPassword'>Forgot Password?</Link>
                 </p>
-                <button className="login-button" type="submit">Login</button>
+                {authLoading ? (
+                    <button className="login-button">Loading...</button>
+                ) : (
+                    <button className="login-button" type="submit">Login</button>
+                )}
             </form>
         </div>
         </>
