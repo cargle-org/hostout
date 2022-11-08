@@ -1416,3 +1416,37 @@ item h1{
 }
 
 /* ---------- the Register form style end -----------*/
+
+/* --------------- verify Registration ----------------- */
+
+.verify-container{
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 100px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.verify{
+  align-items: center;
+}
+.verify-text{
+  align-items: center;
+
+}
+.verify-text h2{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2.5rem;
+  color: #50C878	;
+}
+.verify-text p{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+
+/* --------------- verify Registration  end ----------------- */
+

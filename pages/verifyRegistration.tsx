@@ -1,7 +1,8 @@
 import React, {  useState, useContext } from "react";
 import AppContext from "../context/AppContext";
 import axios from "axios";
-import { success, error } from "../helpers/Alert";
+import { success, error } from "../helpers/Alert"
+import Image from "next/image";
 
 const VerifyRegistration = () => {
 
@@ -43,8 +44,19 @@ const VerifyRegistration = () => {
 
 
     return(
-        <div className="login-body" >
-            <h1>Verifying Email, please wait...</h1>
+        <div className="verify-container" >
+            <div className="verify">
+            <Image 
+            src='/check.png'
+            width={200}
+            height={200}
+            alt='image'
+          />
+            </div>
+            <div className="verify-text">
+            <h2>Success</h2>
+              <p>You have succesfully verified your Email .</p>
+            </div>
         </div>
     );
 }
