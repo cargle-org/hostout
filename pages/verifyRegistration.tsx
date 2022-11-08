@@ -3,6 +3,7 @@ import AppContext from "../context/AppContext";
 import axios from "axios";
 import { success, error } from "../helpers/Alert"
 import Image from "next/image";
+import Link from "next/link";
 
 const VerifyRegistration = () => {
 
@@ -56,6 +57,9 @@ const VerifyRegistration = () => {
             <div className="verify-text">
             <h2>Success</h2>
               <p>You have succesfully verified your Email .</p>
+              <div className="verify-btn">
+              <button><Link href="/login" > Login </Link></button>
+              </div>
             </div>
         </div>
     );
