@@ -4,7 +4,6 @@ import axios from "axios";
 import { success, error } from "../helpers/Alert";
 
 const ChangePassword = () => {
-    const url = "https://event-manager001.herokuapp.com/api/v1/auth/change-password";
 
     const {authLoading, setAuthLoading} = useContext(AppContext)
 

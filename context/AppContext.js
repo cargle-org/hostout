@@ -16,6 +16,7 @@ export const AppProvider = ({ children }) => {
 
   // Loading states
   const [authLoading, setAuthLoading] = useState(false);
+  const [newEventLoading, setNewEventLoading] = useState(false);
 
   /************
    *********
@@ -48,8 +49,10 @@ export const AppProvider = ({ children }) => {
         */
         // Loading states
         authLoading,
+        newEventLoading,
 
         setAuthLoading,
+        setNewEventLoading,
 
         /* ***********
          *********

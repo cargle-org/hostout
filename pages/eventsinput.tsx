@@ -1,3 +1,4 @@
+import React, {useState, useContext } from "react"
 import Head from "next/head";
 import Navbar from "../Components/Navbar";
 import Experience from "../Components/Experience";
@@ -5,7 +6,10 @@ import Footer from "../Components/Footer";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { text } from "stream/consumers";
-import Axios from "axios";
+import AppContext from "../context/AppContext";
+import {success, error} from "../helpers/Alert";
+import axios from "axios";
+
 
 interface FormInputs {
   singleErrorInput: string;
@@ -21,6 +25,69 @@ export const Eventsinput = () => {
   const onSubmit: any = (data: FormInputs) => {
     alert(JSON.stringify(data));
   };
+
+  const {newEventLoading, setNewEventLoading} = useContext(AppContext);
+
+
+  const [newEvent, setNewEvent] = useState({
+    name:"",
+    image: [""],
+    event_programme: ["", ""],
+    time: "",
+    date:"",
+    location: "",
+    event_type: "",
+    event_fee: 0,
+    tags:["", ""],
+    menu:["", ""],
+    additional_activities:[{
+        activity_name: "",
+        price: 0,
+        description: ""
+    },
+    {
+        activity_name: "",
+        price: 0,
+        description: ""
+    }
+    ]
+  })
+
+    const onchangeHandler = (e) => {
+        e.persist();
+        setNewEvent((item) => ({
+        ...item,
+        [e.target.name]: e.target.value,
+        }));
+    };
+
+    const submit = async (e) => {
+    e.preventDefault();
+    console.log("newEvent: ", newEvent);
+    try {
+          setNewEventLoading(true);
+      const response = await axios.post(
+        "https://event-manager001.herokuapp.com/api/v1/event/create",
+        newEvent,
+        {
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("hostout-token")}`,
+          },
+        }
+      );
+      console.log("🚀 ~ file: eventsinput.tsx ~ line 60 ~ submit ~ response", response)
+      setNewEventLoading(false);
+      if (response.status === 201) {
+        success(response.data.msg);
+      }
+    } catch (err) {
+      error("Couldn't create event");
+      console.log(err);
+      setNewEventLoading(false);
+    }
+  };
+
 
   return (
     <div>
