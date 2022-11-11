@@ -1416,3 +1416,57 @@ item h1{
 }
 
 /* ---------- the Register form style end -----------*/
+
+/* --------------- verify Registration ----------------- */
+
+.verify-container{
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 100px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.verify{
+  align-items: center;
+}
+.verify-text{
+  align-items: center;
+
+}
+.verify-text h2{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2.5rem;
+  color: #50C878	;
+}
+.verify-text p{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+.verify-btn{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.verify-btn button {
+  padding: 15px 30px ;
+  background-color: #50C878;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin: auto;
+  font-size: 1rem;
+}
+.verify-btn button:hover{
+  background-color : white;
+  color: #50C878;
+  border: 1px black solid;
+  
+}
+
+
+/* --------------- verify Registration  end ----------------- */
+

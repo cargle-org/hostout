@@ -116,6 +116,100 @@ export const Eventsinput = () => {
               defaultValue={newEvent.name} 
             />
           </div>
+          {/* this is where i added stuff */}
+          <div className="form-event-title">
+            <h3>Enter Date*</h3>
+            <input
+              {...register("enterEventName", { required: "Input event name." })}
+              type="date"
+              placeholder="Enter Event Title"
+              id="eventName"
+            />
+
+            <ErrorMessage
+              errors={errors}
+              name="enterEvent"
+              render={({ message }) => <p className="formError">{message}</p>}
+            />
+          </div>
+
+          <div className="form-event-title">
+            <h3>Event Location*</h3>
+            <input
+              {...register("enterEventName", { required: "Input event name." })}
+              type="text"
+              placeholder="Enter Event Title"
+              id="eventName"
+            />
+
+            <ErrorMessage
+              errors={errors}
+              name="enterEvent"
+              render={({ message }) => <p className="formError">{message}</p>}
+            />
+          </div>
+
+          <div className="form-event-title">
+            <h3>Enter Program*</h3>
+            <input
+              {...register("enterEventName", { required: "Input event name." })}
+              type="text"
+              placeholder="Enter Event Title"
+              id="eventName"
+            />
+
+            <ErrorMessage
+              errors={errors}
+              name="enterEvent"
+              render={({ message }) => <p className="formError">{message}</p>}
+            />
+          </div>
+
+          <div className="form-event-title">
+            <h3>Event Type*</h3>
+            <input
+              {...register("enterEventName", { required: "Input event name." })}
+              type="text"
+              placeholder="Enter Event Title"
+              id="eventName"
+            />
+
+            <ErrorMessage
+              errors={errors}
+              name="enterEvent"
+              render={({ message }) => <p className="formError">{message}</p>}
+            /><div className="form-event-title">
+            <h3>Enter Event*</h3>
+            <input
+              {...register("enterEventName", { required: "Input event name." })}
+              type="text"
+              placeholder="Enter Event Title"
+              id="eventName"
+            />
+
+            <ErrorMessage
+              errors={errors}
+              name="enterEvent"
+              render={({ message }) => <p className="formError">{message}</p>}
+            />
+          </div>
+          </div>
+
+          <div className="form-event-title">
+            <h3>Time*</h3>
+            <input
+              {...register("enterEventName", { required: "Input event name." })}
+              type="time"
+              placeholder="Enter Event Title"
+              id="eventName"
+            />
+
+            <ErrorMessage
+              errors={errors}
+              name="enterEvent"
+              render={({ message }) => <p className="formError">{message}</p>}
+            />
+          </div>
           {/*-- the price and catergory is flexed---*/}
           <div className="input-container">
             <div className="form-event-category">
