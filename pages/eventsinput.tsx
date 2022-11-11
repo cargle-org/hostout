@@ -65,14 +65,15 @@ export const Eventsinput = () => {
     e.preventDefault();
     console.log("newEvent: ", newEvent);
     try {
-          setNewEventLoading(true);
-      const response = await axios.post(
+        setNewEventLoading(true);
+        const response = await axios.post(
         "https://event-manager001.herokuapp.com/api/v1/event/create",
         newEvent,
         {
           headers: {
             "content-type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("hostout-token")}`,
+            // Authorization: `Bearer ${localStorage.getItem("hostout-token")}`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmJiYTdhZDA1Y2Q2YzM2NTQzNzY3ZCIsImlhdCI6MTY2ODAwNDY3NywiZXhwIjoxNjY4MDkxMDc3fQ.KSoizuq2oAy44cAp6mn69O8SsO1JuifmQ0BRLj45uAQ`,
           },
         }
       );
@@ -106,16 +107,13 @@ export const Eventsinput = () => {
           <div className="form-event-title">
             <h3>Enter Event*</h3>
             <input
-              {...register("enterEventName", { required: "Input event name." })}
               type="text"
               placeholder="Enter Event Title"
               id="eventName"
-            />
-
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
+              name="name"
+              onChange={onchangeHandler}
+              required
+              defaultValue={newEvent.name} 
             />
           </div>
           {/*-- the price and catergory is flexed---*/}
