@@ -1,4 +1,4 @@
-import React, {useState, useContext } from "react"
+import React, {useState, useContext, useEffect } from "react"
 import Head from "next/head";
 import Navbar from "../Components/Navbar";
 import Experience from "../Components/Experience";
@@ -28,29 +28,34 @@ export const Eventsinput = () => {
 
   const {newEventLoading, setNewEventLoading} = useContext(AppContext);
 
+  let SN = 0;
+
+  const [eventProgramme, setEventProgramme] = useState(["opening prayer", "Refreshment", "Closing Prayer"])
+  console.log("eventProgramme", eventProgramme)
+  const [eventTags, setEventTags] = useState([])
+  console.log(" eventTags", eventTags)
+  const [eventMenu, setEventMenu] = useState([])
+  console.log("eventMenu", eventMenu)
+  const [activityList, setActivityList] = useState({
+        "activity_name": "",
+        "price": 0,
+        "description":""
+  })
+  console.log("activityList", activityList)
+
 
   const [newEvent, setNewEvent] = useState({
     name:"",
-    image: [""],
-    event_programme: ["", ""],
+    image: ["first image"],
+    event_programme: [],
     time: "",
     date:"",
     location: "",
-    event_type: "",
+    event_type: "Private",
     event_fee: 0,
-    tags:["", ""],
-    menu:["", ""],
-    additional_activities:[{
-        activity_name: "",
-        price: 0,
-        description: ""
-    },
-    {
-        activity_name: "",
-        price: 0,
-        description: ""
-    }
-    ]
+    tags:[],
+    menu:[],
+    additional_activities:[]
   })
 
     const onchangeHandler = (e) => {
@@ -60,6 +65,58 @@ export const Eventsinput = () => {
         [e.target.name]: e.target.value,
         }));
     };
+
+    const onArrayChangeHandler = (e) => {
+        e.persist();
+        setNewEvent((item) => ({
+        ...item,
+        [e.target.name]: [...item[e.target.name], e.target.value]
+        }));
+    };
+
+    // Event programme handler
+    const eventProgrammeHandler = async (e) => {
+      try {
+        console.log("eventProgrammeHandler ~ e", e.target.value)
+        e.preventDefault();
+        setEventProgramme([...eventProgramme, e.target.value]);
+      } catch (error) {
+        console.log("🚀 ~ file: eventsinput.tsx ~ line 74 ~ eventProgrammeHandler ~ error", error)
+      }
+    }
+
+    // Event tags handler
+    const eventTagsHandler = async (e) => {
+      try {
+        e.preventDefault();
+        setEventTags([...eventTags, e.target.value]);
+      } catch (error) {
+        console.log("🚀 ~ file: eventsinput.tsx ~ line 74 ~ eventProgrammeHandler ~ error", error)
+      }
+    }
+
+    // Event Menu handler
+    const eventMenuHandler = async (e) => {
+      try {
+        e.preventDefault();
+        setEventMenu([...eventMenu, e.target.value]);
+      } catch (error) {
+        console.log("🚀 ~ file: eventsinput.tsx ~ line 74 ~ eventProgrammeHandler ~ error", error)
+      }
+    }  
+
+    const onActivitiesChangeHandler = (e) => {
+     try {
+       e.preventDefault();
+       setActivityList((item) => ({
+        ...item,
+        [e.target.name]: e.target.value,
+        }));
+     } catch (error) {
+      console.log("onActivitiesChangeHandler ~ error", error)
+      
+     }
+    }
 
     const submit = async (e) => {
     e.preventDefault();
@@ -73,7 +130,7 @@ export const Eventsinput = () => {
           headers: {
             "content-type": "application/json",
             // Authorization: `Bearer ${localStorage.getItem("hostout-token")}`,
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmJiYTdhZDA1Y2Q2YzM2NTQzNzY3ZCIsImlhdCI6MTY2ODAwNDY3NywiZXhwIjoxNjY4MDkxMDc3fQ.KSoizuq2oAy44cAp6mn69O8SsO1JuifmQ0BRLj45uAQ`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3NmEyYjViOWQzNWZmMmU4MjhjMiIsImlhdCI6MTY2ODE4NDIwNCwiZXhwIjoxNjY4MjcwNjA0fQ.HvYaem-OuE3PgHBJB9LDH6s8RLQQZqzTdykoLE17fbw`,
           },
         }
       );
@@ -89,6 +146,35 @@ export const Eventsinput = () => {
     }
   };
 
+  // UPDATE MAIN STATE
+  useEffect(() => {
+    setNewEvent((item) => ({
+        ...item,
+        event_programme: [...item.event_programme, eventProgramme],
+    }));
+  }, [eventProgramme])
+
+  useEffect(() => {
+    setNewEvent((item) => ({
+        ...item,
+        tags: [...item.tags, eventTags],
+    }));
+  }, [eventTags])
+
+  useEffect(() => {
+    setNewEvent((item) => ({
+        ...item,
+        menu: [...item.menu, eventMenu],
+    }));
+  }, [eventMenu])
+
+  useEffect(() => {
+    setNewEvent((item) => ({
+        ...item,
+        additional_activities: [...item.additional_activities, activityList],
+    }));
+  }, [activityList])
+
 
   return (
     <div>
@@ -103,283 +189,247 @@ export const Eventsinput = () => {
         <div id="About-event">
           <h2>Host an event</h2>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+        {/* <form onSubmit={submit}> */}
+
+          {/* name */}
           <div className="form-event-title">
-            <h3>Enter Event*</h3>
+            <h3>Enter Event Name*</h3>
             <input
               type="text"
-              placeholder="Enter Event Title"
-              id="eventName"
+              placeholder="Enter Event Name"
+              id="name"
               name="name"
               onChange={onchangeHandler}
               required
               defaultValue={newEvent.name} 
             />
           </div>
-          {/* this is where i added stuff */}
-          <div className="form-event-title">
-            <h3>Enter Date*</h3>
-            <input
-              {...register("enterEventName", { required: "Input event name." })}
-              type="date"
-              placeholder="Enter Event Title"
-              id="eventName"
-            />
 
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
+          {/* event_programme */}
+          <div className="person-container-info">
+            <div className="person-name-info">
+              <>
+              <form onSubmit={eventProgrammeHandler}>  
+                <h3>Enter Program*</h3>
+                <input
+                  type="text"
+                  placeholder="Enter Event Title"
+                  id="event_programme"
+                  name="event_programme"
+                  // onChange={eventProgrammeHandler}
+                  required
+                  // defaultValue={newEvent.event_programme} 
+                />
+                <button type="submit">Add</button>
+              </form>
+              <br />
+              <ul style={{listStyle: "none"}}>
+                {eventProgramme.map((event, i) => (
+                  <li key={i}>
+                    {SN = SN + 1}. {event}
+                  </li>
+                  ))}
+              </ul>
+            </>
+            </div>
           </div>
 
+          {/* time, date */}
+          <div className="input-container">
+            {/* time */}
+            <div className="form-event-category">
+              <h3>Time*</h3>
+              <input
+                type="time"
+                placeholder="Enter Event Title"
+                id="time"
+                name="time"
+                onChange={onchangeHandler}
+                required
+                defaultValue={newEvent.time} 
+              />
+            </div>
+
+            {/* date */}
+            <div className="form-event-category">
+              <h3>Enter Date*</h3>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                onChange={onchangeHandler}
+                required
+                defaultValue={newEvent.date} 
+              />
+            </div>
+          </div>
+
+          {/* location */}
           <div className="form-event-title">
             <h3>Event Location*</h3>
             <input
-              {...register("enterEventName", { required: "Input event name." })}
               type="text"
-              placeholder="Enter Event Title"
-              id="eventName"
-            />
-
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
+              placeholder="Event Location"
+              id="location"
+              name="location"
+              onChange={onchangeHandler}
+              required
+              defaultValue={newEvent.location} 
             />
           </div>
 
-          <div className="form-event-title">
-            <h3>Enter Program*</h3>
-            <input
-              {...register("enterEventName", { required: "Input event name." })}
-              type="text"
-              placeholder="Enter Event Title"
-              id="eventName"
-            />
-
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
-          </div>
-
-          <div className="form-event-title">
-            <h3>Event Type*</h3>
-            <input
-              {...register("enterEventName", { required: "Input event name." })}
-              type="text"
-              placeholder="Enter Event Title"
-              id="eventName"
-            />
-
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
-            /><div className="form-event-title">
-            <h3>Enter Event*</h3>
-            <input
-              {...register("enterEventName", { required: "Input event name." })}
-              type="text"
-              placeholder="Enter Event Title"
-              id="eventName"
-            />
-
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
-          </div>
-          </div>
-
-          <div className="form-event-title">
-            <h3>Time*</h3>
-            <input
-              {...register("enterEventName", { required: "Input event name." })}
-              type="time"
-              placeholder="Enter Event Title"
-              id="eventName"
-            />
-
-            <ErrorMessage
-              errors={errors}
-              name="enterEvent"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
-          </div>
-          {/*-- the price and catergory is flexed---*/}
+          {/* event type, event fee */}
           <div className="input-container">
+            {/* event_type */}
             <div className="form-event-category">
-              <h3>Select a catergory</h3>
-              <select id="items" required>
-                <option value="#">select a catergory </option>
-                <option value="Tech">Tech</option>
-                <option value="Tech">Linux</option>
-                <option value="Tech">loop</option>
-              </select>
+             <h3>Event Type*</h3>
+            <select name="event_type" id="event_type" required
+              defaultValue={newEvent.event_type}>
+              <option value="">Select event type</option>
+              <option value="private">Private</option>
+              <option value="public">Public</option>
+            </select>
             </div>
+
+            {/* event_fee */}
             <div className="form-event-price">
               <h3>Event registration price</h3>
               <input
-                {...register("amount", { required: "fill this field(₦)" })}
                 type="number"
                 placeholder="Amount"
-              />
-              <ErrorMessage
-                errors={errors}
-                name="amount"
-                render={({ message }) => <p className="formError">{message}</p>}
+                id="event_fee"
+              name="event_fee"
+              onChange={onchangeHandler}
+              required
+              defaultValue={newEvent.event_fee} 
               />
             </div>
           </div>
-          <div className="form-event-description">
-            <h3>Events description</h3>
-            <textarea
-              {...register("eventsDescription", { required: "fill this field" })}
-              rows={5}
-              placeholder="Enter your description here"
-            />
-            <ErrorMessage
-              errors={errors}
-              name="description"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
-          </div>
+
+          {/* tags */}
           <div className="person-container-info">
-            <h3>Add tags to an event</h3>
+            <h3>Add tags to the event</h3>
             <div className="person-name-info">
-              <input
-                {...register("menuName", { required: "fill this field" })}
-                type="text"
-                placeholder="Enter menu name"
-              />
-              <ErrorMessage
-                errors={errors}
-                name="menuName"
-                render={({ message }) => <p className="formError">{message}</p>}
-              />
-              <button>Add</button>
-            </div>
-          </div>
-          <div className="persons-input-info">
-            <h3>How many persons per account</h3>
-            <div id="persons-container">
-              <input type="radio" name="persons" value="numberOfPeople" required />{" "}
-              <span>The Account holder</span>
-              <input type="radio" name="persons" value="numberOfPeople" required />{" "}
-              <span>The holder and a friend</span>
-              <input type="radio" name="persons" value="numberOfPeople" required />{" "}
-              <span> More than three people</span>
-            </div>
-          </div>
-          <div>
-            <h3>Add the availabe list of food menu</h3>
-            <div className="input-food-menu">
-              <input
-                {...register("enterFoodItem", { required: "fill this field" })}
-                type="text"
-                placeholder="enter item here"
-              />
-              <ErrorMessage
-                errors={errors}
-                name="enterFoodItem"
-                render={({ message }) => <p className="formError">{message}</p>}
-              />
-
-              <select id="food-items" required>
-                <option value="">per quantity </option>
-                <option value="">rice</option>
-                <option value="">fish</option>
-                <option value="">swallow</option>
-              </select>
-              <span>Amount</span>
-              <input
-                {...register("enterPrice", { required: "input amount(₦)" })}
-                type="number"
-                placeholder="enter price"
-              />
-              <ErrorMessage
-                errors={errors}
-                name="enterPrice"
-                render={({ message }) => <p className="formError">{message}</p>}
-              />
-              <button>Add</button>
+              <form onSubmit={eventTagsHandler}>
+                <input
+                  type="text"
+                  placeholder="Enter tag name"
+                  id="tags"
+                  name="tags"
+                  // onChange={onArrayChangeHandler}
+                  required
+                  // defaultValue={newEvent.tags}
+                  />
+                <button type="submit">Add tag</button>
+              </form>
+              <br />
+              <ul style={{listStyle: "none"}}>
+                {eventTags.map((event, i) => (
+                  <li key={i}>
+                    {SN = SN + 1}.  {event}
+                  </li>
+                  ))}
+              </ul>
             </div>
           </div>
 
+          {/* menu */}
+          <div className="person-container-info">
+            <h3>Add to event menu</h3>
+            <div className="person-name-info">
+              <form onSubmit={eventMenuHandler}>
+               <input
+                  type="text"
+                  placeholder="Enter menu item name"
+                  id="menu"
+                  name="menu"
+                  // onChange={onArrayChangeHandler}
+                  required
+                  // defaultValue={newEvent.menu}
+                  />
+                <button type="submit">Add to menu</button>
+              </form>
+              <br />
+              <ul style={{listStyle: "none"}}>
+                {eventMenu.map((event, i) => (
+                  <li key={i}>
+                    {SN = SN + 1}. {event}
+                  </li>
+                  ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Additional activities */}
           <div>
             <h3>Add the availabe lists of activities</h3>
-            <div className="input-act-menu">
-              <input
-                {...register("enterActivity", { required: "fill this field" })}
-                type="text"
-                placeholder="enter activity here"
-              />
-              <ErrorMessage
-                errors={errors}
-                name="enterActivity"
-                render={({ message }) => <p className="formError">{message}</p>}
-              />
-              <select id="act-items" required>
-                <option value="">per go / quantity </option>
-                <option value="CODM">CODM</option>
-                <option value="Defcon">DEFCON</option>
-                <option value="Dancing">Dancing </option>
-              </select>
-              <span>Amount</span>
-              <input
-                {...register("enterAmount", { required: "add amount(₦)" })}
-                type="text"
-                placeholder="enter price"
-              />
-              <ErrorMessage
-                errors={errors}
-                name="enterAmount"
-                render={({ message }) => <p className="formError">{message}</p>}
-              />
-              <button>Add</button>
-            </div>
-          </div>
-          <div className="event-location-description">
-            <h3>Event Location</h3>
-            <textarea
-              {...register("enterLocationDescription", {
-                required: "fill this field",
-              })}
-              rows={5}
-              placeholder="Enter your Location description here"
-            />
-            <ErrorMessage
-              errors={errors}
-              name="enterLocationDescription"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
+            <form onSubmit={onActivitiesChangeHandler}>
+              <div className="input-act-menu">
+              {/* activity_name */}
+                <span>Activity name</span>
+                <input
+                  type="text"
+                  placeholder="enter activity here"
+                  id="activity_name"
+                name="activity_name"
+                // onChange={onActivitiesChangeHandler}
+                required
+                // defaultValue={newEvent.additional_activities[0].activity_name} 
+                />
+                <br />
+
+                {/* description */}
+                <span>Description</span>
+                <input
+                  type="textarea"
+                  placeholder="enter description"
+                  id="description"
+                name="description"
+                // onChange={onActivitiesChangeHandler}
+                required
+                // defaultValue={newEvent.additional_activities[0].description} 
+                />
+                <br />
+
+                {/* price */}
+                <span>Amount</span>
+                <input
+                  type="text"
+                  placeholder="enter price"
+                  id="price"
+                name="price"
+                // onChange={onActivitiesChangeHandler}
+                required
+                // defaultValue={newEvent.additional_activities[0].price} 
+                />
+                <br />
+                <button type="submit">Add activity</button>
+              </div>
+            </form>
           </div>
 
+          {/* image */}
           <div className="input-events-image">
             <h3>event images / flyer</h3>
             <input
-              {...register("image", { required: "add image" })}
               type="file"
               placeholder="insert flyer / image"
+              id="image"
+              name="image"
+              // onChange={onchangeHandler}
+              required
+              defaultValue={newEvent.image} 
               
             />{" "}
             <span>Attach image files</span>
-            <ErrorMessage
-              errors={errors}
-              name="image"
-              render={({ message }) => <p className="formError">{message}</p>}
-            />
           </div>
           <div id="input-event-btn">
             <button className="input-event-button" type="submit">
               Create Event
             </button>
           </div>
-        </form>
+        {/* </form> */}
       </div>
       <div id="About-event">
         <h2>People&apos;s experience</h2>
