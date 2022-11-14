@@ -9,6 +9,7 @@ import { text } from "stream/consumers";
 import AppContext from "../context/AppContext";
 import {success, error} from "../helpers/Alert";
 import axios from "axios";
+import CloudinaryUpload from "../middlewares/CloudinaryUpload";
 
 
 interface FormInputs {
@@ -30,23 +31,17 @@ export const Eventsinput = () => {
 
   let SN = 0;
 
-  const [eventProgramme, setEventProgramme] = useState(["opening prayer", "Refreshment", "Closing Prayer"])
-  console.log("eventProgramme", eventProgramme)
+  const [eventProgramme, setEventProgramme] = useState([])
   const [eventTags, setEventTags] = useState([])
-  console.log(" eventTags", eventTags)
   const [eventMenu, setEventMenu] = useState([])
-  console.log("eventMenu", eventMenu)
-  const [activityList, setActivityList] = useState({
-        "activity_name": "",
-        "price": 0,
-        "description":""
-  })
-  console.log("activityList", activityList)
+  const [activityList, setActivityList] = useState([])
+  const [eventImages, setEventImages] = useState([])
+  const [showCreateBtn, setShowCreateBtn] = useState(false);
 
 
   const [newEvent, setNewEvent] = useState({
     name:"",
-    image: ["first image"],
+    image: [],
     event_programme: [],
     time: "",
     date:"",
@@ -57,6 +52,7 @@ export const Eventsinput = () => {
     menu:[],
     additional_activities:[]
   })
+  console.log("newEvent", newEvent)
 
     const onchangeHandler = (e) => {
         e.persist();
@@ -66,20 +62,13 @@ export const Eventsinput = () => {
         }));
     };
 
-    const onArrayChangeHandler = (e) => {
-        e.persist();
-        setNewEvent((item) => ({
-        ...item,
-        [e.target.name]: [...item[e.target.name], e.target.value]
-        }));
-    };
-
     // Event programme handler
     const eventProgrammeHandler = async (e) => {
       try {
-        console.log("eventProgrammeHandler ~ e", e.target.value)
-        e.preventDefault();
-        setEventProgramme([...eventProgramme, e.target.value]);
+        e.persist();
+        const event = document.getElementById('event_programme') as HTMLInputElement | null;
+
+        setEventProgramme([...eventProgramme, event.value]);
       } catch (error) {
         console.log("🚀 ~ file: eventsinput.tsx ~ line 74 ~ eventProgrammeHandler ~ error", error)
       }
@@ -88,34 +77,60 @@ export const Eventsinput = () => {
     // Event tags handler
     const eventTagsHandler = async (e) => {
       try {
-        e.preventDefault();
-        setEventTags([...eventTags, e.target.value]);
+        e.persist();
+        const event = document.getElementById('tags') as HTMLInputElement | null;
+
+        setEventTags([...eventTags, event.value]);
       } catch (error) {
-        console.log("🚀 ~ file: eventsinput.tsx ~ line 74 ~ eventProgrammeHandler ~ error", error)
+        console.log("🚀 ~ file: eventsinput.tsx ~ line 96 ~ eventTagsHandler ~ error", error)
       }
     }
 
     // Event Menu handler
     const eventMenuHandler = async (e) => {
       try {
-        e.preventDefault();
-        setEventMenu([...eventMenu, e.target.value]);
+        e.persist();
+        const event = document.getElementById('menu') as HTMLInputElement | null;
+        setEventMenu([...eventMenu, event.value]);
       } catch (error) {
-        console.log("🚀 ~ file: eventsinput.tsx ~ line 74 ~ eventProgrammeHandler ~ error", error)
+        console.log("🚀 ~ file: eventsinput.tsx ~ line 107 ~ eventMenuHandler ~ error", error)
       }
     }  
 
+    // Additional activities 
     const onActivitiesChangeHandler = (e) => {
      try {
-       e.preventDefault();
-       setActivityList((item) => ({
-        ...item,
-        [e.target.name]: e.target.value,
-        }));
+       e.persist();
+        const activity_name = document.getElementById('activity_name') as HTMLInputElement | null;
+        const description = document.getElementById('description') as HTMLInputElement | null;
+        const price = document.getElementById('price') as HTMLInputElement | null;
+
+        const newActivity = {
+          activity_name: activity_name.value,
+          description: description.value,
+          price: price.value,
+        }
+
+       setActivityList([...activityList, newActivity]);
      } catch (error) {
       console.log("onActivitiesChangeHandler ~ error", error)
-      
      }
+    }
+
+    // media upload handler
+    const onMediaChangeHandler = async (e) => {
+      try {
+        setNewEventLoading(true);
+        e.persist();
+        const file = document.getElementById('image') as HTMLInputElement | null;
+
+        const media = await CloudinaryUpload(file.files[0]);
+        setEventImages([...eventImages, media]);
+        setNewEventLoading(false);
+       } catch (error) {
+        setNewEventLoading(false);
+        console.log("🚀 ~ file: eventsinput.tsx ~ line 127 ~ onMediaChangeHandler ~ error", error)        
+      }
     }
 
     const submit = async (e) => {
@@ -147,33 +162,50 @@ export const Eventsinput = () => {
   };
 
   // UPDATE MAIN STATE
+  // programme
   useEffect(() => {
     setNewEvent((item) => ({
         ...item,
-        event_programme: [...item.event_programme, eventProgramme],
+        event_programme: eventProgramme,
     }));
   }, [eventProgramme])
 
+  // tags
   useEffect(() => {
     setNewEvent((item) => ({
         ...item,
-        tags: [...item.tags, eventTags],
+        tags: eventTags,
     }));
   }, [eventTags])
 
+  // menu
   useEffect(() => {
     setNewEvent((item) => ({
         ...item,
-        menu: [...item.menu, eventMenu],
+        menu: eventMenu,
     }));
   }, [eventMenu])
 
+  // additional activities
   useEffect(() => {
     setNewEvent((item) => ({
         ...item,
-        additional_activities: [...item.additional_activities, activityList],
+        additional_activities: activityList,
     }));
   }, [activityList])
+  
+  // Images
+  useEffect(() => {
+    setNewEvent((item) => ({
+        ...item,
+        image: eventImages,
+    }));
+  }, [eventImages])
+
+  // show button to create event only after form has been filled
+  useEffect(() => {
+    setShowCreateBtn(!showCreateBtn);
+  }, [newEvent.image])
 
 
   return (
@@ -185,12 +217,11 @@ export const Eventsinput = () => {
       </Head>
       <Navbar />
 
+      <form onSubmit={submit}>
       <div className="form-input">
         <div id="About-event">
           <h2>Host an event</h2>
         </div>
-        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-        {/* <form onSubmit={submit}> */}
 
           {/* name */}
           <div className="form-event-title">
@@ -210,31 +241,27 @@ export const Eventsinput = () => {
           <div className="person-container-info">
             <div className="person-name-info">
               <>
-              <form onSubmit={eventProgrammeHandler}>  
                 <h3>Enter Program*</h3>
                 <input
                   type="text"
                   placeholder="Enter Event Title"
                   id="event_programme"
                   name="event_programme"
-                  // onChange={eventProgrammeHandler}
                   required
-                  // defaultValue={newEvent.event_programme} 
                 />
-                <button type="submit">Add</button>
-              </form>
+                <button onClick={eventProgrammeHandler}>Add</button>
               <br />
-              <ul style={{listStyle: "none"}}>
+              <ul>
                 {eventProgramme.map((event, i) => (
                   <li key={i}>
-                    {SN = SN + 1}. {event}
+                    {event}
                   </li>
                   ))}
               </ul>
             </>
             </div>
           </div>
-
+    
           {/* time, date */}
           <div className="input-container">
             {/* time */}
@@ -311,23 +338,19 @@ export const Eventsinput = () => {
           <div className="person-container-info">
             <h3>Add tags to the event</h3>
             <div className="person-name-info">
-              <form onSubmit={eventTagsHandler}>
                 <input
                   type="text"
                   placeholder="Enter tag name"
                   id="tags"
                   name="tags"
-                  // onChange={onArrayChangeHandler}
                   required
-                  // defaultValue={newEvent.tags}
                   />
-                <button type="submit">Add tag</button>
-              </form>
+                <button onClick={eventTagsHandler}>Add tag</button>
               <br />
-              <ul style={{listStyle: "none"}}>
+              <ul>
                 {eventTags.map((event, i) => (
                   <li key={i}>
-                    {SN = SN + 1}.  {event}
+                    {event}
                   </li>
                   ))}
               </ul>
@@ -338,23 +361,19 @@ export const Eventsinput = () => {
           <div className="person-container-info">
             <h3>Add to event menu</h3>
             <div className="person-name-info">
-              <form onSubmit={eventMenuHandler}>
                <input
                   type="text"
                   placeholder="Enter menu item name"
                   id="menu"
                   name="menu"
-                  // onChange={onArrayChangeHandler}
                   required
-                  // defaultValue={newEvent.menu}
-                  />
-                <button type="submit">Add to menu</button>
-              </form>
+                />
+                <button onClick={eventMenuHandler}>Add to menu</button>
               <br />
-              <ul style={{listStyle: "none"}}>
+              <ul>
                 {eventMenu.map((event, i) => (
                   <li key={i}>
-                    {SN = SN + 1}. {event}
+                    {event}
                   </li>
                   ))}
               </ul>
@@ -364,7 +383,6 @@ export const Eventsinput = () => {
           {/* Additional activities */}
           <div>
             <h3>Add the availabe lists of activities</h3>
-            <form onSubmit={onActivitiesChangeHandler}>
               <div className="input-act-menu">
               {/* activity_name */}
                 <span>Activity name</span>
@@ -373,9 +391,7 @@ export const Eventsinput = () => {
                   placeholder="enter activity here"
                   id="activity_name"
                 name="activity_name"
-                // onChange={onActivitiesChangeHandler}
                 required
-                // defaultValue={newEvent.additional_activities[0].activity_name} 
                 />
                 <br />
 
@@ -386,9 +402,7 @@ export const Eventsinput = () => {
                   placeholder="enter description"
                   id="description"
                 name="description"
-                // onChange={onActivitiesChangeHandler}
                 required
-                // defaultValue={newEvent.additional_activities[0].description} 
                 />
                 <br />
 
@@ -399,38 +413,48 @@ export const Eventsinput = () => {
                   placeholder="enter price"
                   id="price"
                 name="price"
-                // onChange={onActivitiesChangeHandler}
                 required
-                // defaultValue={newEvent.additional_activities[0].price} 
                 />
                 <br />
-                <button type="submit">Add activity</button>
+                <button onClick={onActivitiesChangeHandler}>Add activity</button>
               </div>
-            </form>
           </div>
 
           {/* image */}
           <div className="input-events-image">
-            <h3>event images / flyer</h3>
-            <input
-              type="file"
-              placeholder="insert flyer / image"
-              id="image"
-              name="image"
-              // onChange={onchangeHandler}
-              required
-              defaultValue={newEvent.image} 
-              
-            />{" "}
-            <span>Attach image files</span>
+              <h3>event images / flyer</h3>
+              <input
+                type="file"
+                placeholder="insert flyer / image"
+                id="image"
+                name="image"
+                required
+                
+              />{" "}
+              <span>Attach image files</span>
+              <button onClick={onMediaChangeHandler}>Add Image</button>
+              <br />
+              <ul>
+                {eventImages.map((event, i) => (
+                  <li key={i}>
+                    {event.split("image")[1]}
+                  </li>
+                  ))}
+              </ul>
           </div>
+
+          
           <div id="input-event-btn">
-            <button className="input-event-button" type="submit">
-              Create Event
-            </button>
+            {newEventLoading ? (
+              ""
+             ) : (
+              <button className="input-event-button" type="submit">
+                Create Event
+              </button>
+             )}
           </div>
-        {/* </form> */}
       </div>
+      </form>
       <div id="About-event">
         <h2>People&apos;s experience</h2>
       </div>
