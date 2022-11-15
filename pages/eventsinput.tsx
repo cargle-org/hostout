@@ -122,7 +122,7 @@ export const Eventsinput = () => {
           <div className="form-event-title">
             <h3>Enter Date*</h3>
             <input
-              {...register("enterEventName", { required: "Input event name." })}
+              {...register("enterEventName", { required: "Input event date." })}
               type="date"
               placeholder="Enter Event Title"
               id="eventName"
@@ -138,7 +138,7 @@ export const Eventsinput = () => {
           <div className="form-event-title">
             <h3>Event Location*</h3>
             <input
-              {...register("enterEventName", { required: "Input event name." })}
+              {...register("enterEventName", { required: "Input event location." })}
               type="text"
               placeholder="Enter Event Title"
               id="eventName"
@@ -154,7 +154,7 @@ export const Eventsinput = () => {
           <div className="form-event-title">
             <h3>Enter Program*</h3>
             <input
-              {...register("enterEventName", { required: "Input event name." })}
+              {...register("enterEventName", { required: "Input event program." })}
               type="text"
               placeholder="Enter Event Title"
               id="eventName"
@@ -170,7 +170,7 @@ export const Eventsinput = () => {
           <div className="form-event-title">
             <h3>Event Type*</h3>
             <input
-              {...register("enterEventName", { required: "Input event name." })}
+              {...register("enterEventName", { required: "Input event type." })}
               type="text"
               placeholder="Enter Event Title"
               id="eventName"
