@@ -7,8 +7,8 @@ const nextConfig = {
     loader: "akamai",
     path: "",
   },
-  basePath: "/hostout-frontend-tsx-",
-  assetPrefix: "/hostout-frontend-tsx-",
-};
+  // basePath: "/hostout-fro"
+  // assetPrefix: "/hostout-frontend-tsx-",
 
+};
 module.exports = nextConfig;

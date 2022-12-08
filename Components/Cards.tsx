@@ -19,28 +19,23 @@ const data = await axios.head('https://event-manager001.herokuapp.com/api/v1/eve
 .catch(err => console.log(err))
 }
 console.log(getStaticProps())
-const Cards = () => {
+const Cards = ({image}) => {
+  // {event}
   return (
     <div className="card">
-      <div className="card-image card-1">
-        <Image
-          src="/A.jpg"
-          width={264}
-          height={182}
-          className="card-img"
-          alt="image"
-        />
+      <div className="card-image" style={{backgroundImage: `url(${image})`, backgroundSize: "150%", 
+  backgroundRepeat: "no-repeat", overflow: "hidden", backgroundPosition:"center center"}}>
       </div>
       <div className="card-title">
-        <h2> chilling with wizkid</h2>
+        <h2> Chilling with wizkid</h2>
         <FontAwesomeIcon
           icon={faClock}
-          style={{ fontSize: 20, color: "black" }}
+          style={{ color: "#aaaaaa", paddingTop: "3px", fontSize: 20}}
         />
+        <p> 4d</p>
       </div>
       <div className="card-details">
-        {" "}
-        <p>you forget to look at your phone</p>
+        <p>You forget to look at your phone<span>...</span></p>
       </div>
 
       <Tag />
@@ -48,9 +43,7 @@ const Cards = () => {
 
       <div className="card-price">
         <h2>₦3000</h2>
-        <a>
-          <FontAwesomeIcon icon={faHeart} />
-        </a>
+          <FontAwesomeIcon className="favorite" icon={faHeart}/>
       </div>
     </div>
   );
