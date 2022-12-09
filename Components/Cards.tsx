@@ -20,7 +20,6 @@ const data = await axios.head('https://event-manager001.herokuapp.com/api/v1/eve
 }
 console.log(getStaticProps())
 const Cards = ({image}) => {
-  // {event}
   return (
     <div className="card">
       <div className="card-image" style={{backgroundImage: `url(${image})`, backgroundSize: "150%", 
@@ -30,7 +29,7 @@ const Cards = ({image}) => {
         <h2> Chilling with wizkid</h2>
         <FontAwesomeIcon
           icon={faClock}
-          style={{ color: "#aaaaaa", paddingTop: "3px", fontSize: 20}}
+          style={{ color: "#aaaaaa", paddingTop: "2px", fontSize: 20}}
         />
         <p> 4d</p>
       </div>

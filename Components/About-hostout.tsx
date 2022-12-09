@@ -1,7 +1,3 @@
-import Image from "next/image";
-{
-	/* <FontAwesomeIcon icon="fa-solid fa-comment-exclamation" /> */
-}
 const About = ({icon, text, header}) => {
 	return (
 		<div className="about-card">

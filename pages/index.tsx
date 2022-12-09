@@ -18,12 +18,13 @@ import About from "../Components/About-hostout";
 import Experience from "../Components/Experience";
 import Footer from "../Components/Footer";
 import Link from "next/link";
+import AddCard from "../Components/AddCard";
 
 const Home: NextPage = () => {
 	const { topbarTitle } = useContext(AppContext);
 
 	return (
-		<div>
+		<div style={{ overflow: "hidden" }}>
 			<Head>
 				<title>Hostout</title>
 				<meta name="description" content="Host and find events near you" />
@@ -41,6 +42,7 @@ const Home: NextPage = () => {
 						<Card image="/group-1.jpg" />
 						<Card image="/group-2.jpg" />
 						<Card image="/group-3.jpg" />
+						<AddCard/>
 						{/* <Card /> */}
 					</div>
 					<div className="about-container">
@@ -73,16 +75,19 @@ const Home: NextPage = () => {
 					</div>
 					<HowToHost />
 					<HowToAttend />
-					<div id="card-head">
-						<h2>Recommended for you </h2>
-						<a>view all</a>
+					<div className="recommended">
+						<div id="card-head">
+							<h2>Recommended for you </h2>
+							<Link href="/eventspage">view all</Link>
+						</div>
+						<div className="card-container-2">
+							<Card image="/group-1.jpg" />
+							<Card image="/group-2.jpg" />
+							<Card image="/group-3.jpg" />
+							<Card image="/group-3.jpg" />
+						</div>
 					</div>
-					<div className="card-container">
-						{/* <Card />
-						<Card />
-						<Card />
-						<Card /> */}
-					</div>
+
 					<div id="About-event">
 						<h2>People&apos;s experience</h2>
 					</div>
