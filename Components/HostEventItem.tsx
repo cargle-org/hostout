@@ -1,10 +1,10 @@
 import React from 'react'
 import StarIcon from '@mui/icons-material/Star';
 
-function HostEventItem({text}) {
+function HostEventItem({color, text}) {
   return (
-    <div className='host-event-item'>
-        <StarIcon fontSize='medium'/>
+    <div className={color} >
+        <span><StarIcon fontSize='medium'/></span>
         <p>{text}</p>
     </div>
   )

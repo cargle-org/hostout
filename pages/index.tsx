@@ -19,6 +19,7 @@ import Experience from "../Components/Experience";
 import Footer from "../Components/Footer";
 import Link from "next/link";
 import AddCard from "../Components/AddCard";
+import ExperienceSection from "../Components/ExperienceSection";
 
 const Home: NextPage = () => {
 	const { topbarTitle } = useContext(AppContext);
@@ -42,8 +43,7 @@ const Home: NextPage = () => {
 						<Card image="/group-1.jpg" />
 						<Card image="/group-2.jpg" />
 						<Card image="/group-3.jpg" />
-						<AddCard/>
-						{/* <Card /> */}
+						<AddCard />
 					</div>
 					<div className="about-container">
 						<div id="About-event">
@@ -88,17 +88,17 @@ const Home: NextPage = () => {
 						</div>
 					</div>
 
-					<div id="About-event">
-						<h2>People&apos;s experience</h2>
-					</div>
-					<div className="about-container">
-						<Experience />
-						<Experience />
-						<Experience />
+					<div className="about">
+						<div id="Experience-event">
+							<h2>People&apos;s experience</h2>
+						</div>
+							<ExperienceSection/>
+						
 					</div>
 				</div>
+				<Footer /> 
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };

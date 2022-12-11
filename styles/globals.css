@@ -23,7 +23,7 @@ a {
 /*------Navigation bar starts here-----*/
 .nav-bar {
 	background: #ffffff;
-	height: 12%;
+	height: 80px;
 	display: flex;
 	justify-content: space-evenly;
 	width: 100%;
@@ -36,6 +36,11 @@ a {
 	width: 100%;
 	z-index: 99999999;
 }
+
+.nav-bar-image {
+	cursor: pointer;
+}
+
 .nav-form {
 	border: 0.5px solid #dddddd;
 	box-shadow: 0px 2px 4px 0px #e5e5e5;
@@ -120,27 +125,55 @@ a {
 .nav-option {
 	margin-top: 10px;
 }
-#angle-down {
-	margin-left: -38px;
-	font-size: 20px;
-	margin-top: 5px;
+
+.menu {
+	width: 10vw;
+	text-align: left;
+	cursor: pointer;
+	color: #aaaaaa;
+	margin-top: 12px;
+}
+
+.menu-item {
+	font-size: 14px;
+}
+
+.menu-item:hover {
+	color: gold;
+}
+
+.menu-icon {
+	font-size: 40px;
+}
+.angle-down {
+	margin: 16px 10px 0px 15px;
 	cursor: pointer;
 }
 
+.angle-down-icon {
+	font-size: 25px;
+}
 #bell {
 	font-size: 20px;
 	margin-top: 10px;
 	cursor: pointer;
 	margin-right: 10px;
 }
+
+.bell-icon {
+	font-size: 25px;
+	margin: 5px;
+}
 /*------Navigation bar ends here -------*/
 
 /*-------Home page header starts here -------*/
 .flexbox-container {
 	height: 100vh;
+	width: 100%;
 	background-color: #f5f7f7;
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 100px;
 }
 
 .flexbox-1 {
@@ -322,7 +355,7 @@ a {
 }
 
 #card-head a:hover {
-	color: orange;
+	color: gold;
 }
 
 .card {
@@ -548,7 +581,7 @@ a {
 	color: white;
 	display: flex;
 	flex-direction: row;
-	width: 500px;
+	width: 80%;
 }
 
 .host-event-item p {
@@ -558,6 +591,24 @@ a {
 	padding-left: 30px;
 }
 
+.host-event-item-2 span {
+	color: #131034;
+}
+
+.host-event-item-2 {
+	margin-top: 7px;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+}
+
+.host-event-item-2 p {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 18px;
+	padding-top: 1px;
+	padding-left: 30px;
+}
 .host-logo {
 	height: inherit;
 	min-width: 600px;
@@ -600,7 +651,7 @@ a {
 	color: white;
 	font-size: 28px;
 	margin: 5%;
-	width: auto;
+	width: 650px;
 	display: block;
 }
 
@@ -620,6 +671,51 @@ a {
 	);
 	display: inline-block;
 	margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 0) {
+	.host-event {
+		width: 100%;
+		min-width: 100%;
+	}
+
+	.attend-event {
+		width: 100%;
+		min-width: 100%;
+		padding-bottom: 10vh;
+		padding-top: 10vh;
+		height: inherit;
+	}
+
+	.host-event-item-2 {
+		padding-left: 20px;
+	}
+
+	.address{
+		padding-left: 10%;
+	}
+	#how-to-attend {
+		width: 110%;
+	}
+
+	#Attend-event {
+		padding-left: 1%;
+		width: 95%;
+		margin-top: 10vh;
+	}
+}
+@media only screen and (min-width: 1400px) {
+	#Attend-event {
+		padding-left: 40px;
+	}
+
+	.host-event-item {
+		margin-right: 40px;
+	}
+
+	.host-event-item-2 {
+		margin-right: 40px;
+	}
 }
 @media only screen and (max-width: 1200px) {
 	#how-to-attend {
@@ -643,15 +739,20 @@ a {
 		margin-left: 1%;
 	}
 
-	.recommended {
-		margin-top: 100vh;
+	.attend-event .host-event-item-2 {
+		margin-left: 1%;
 	}
 
-	.about1 {
+	.recommended {
 		margin-top: 100vh;
 	}
 }
 
+@media only screen and (max-width: 948px) {
+	.about1 {
+		margin-top: 100vh;
+	}
+}
 @media only screen and (max-width: 600px) {
 	.attend-event {
 		width: 100%;
@@ -661,7 +762,7 @@ a {
 	}
 
 	#Attend-event {
-		margin-left: -4%;
+		margin-left: -1%;
 		font-size: 25px;
 	}
 	.host-event {
@@ -682,11 +783,38 @@ a {
 	padding-top: 13vh;
 }
 
+.carousel-container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
+	padding-bottom: 70px;
+}
+
+.carousel-item {
+	width: 10vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.about-container-2 {
+	/* height: 100vh; */
+	padding-top: 4vh;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding-bottom: 6vh;
+}
+
 .about-container-items {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	padding-bottom: 10vh;
 }
 
 #about-h2 {
@@ -770,14 +898,12 @@ a {
 
 /*-------Experience ------*/
 .experience-card {
-	height: 294px;
-	width: 300px;
-	left: 180px;
-	top: 4602px;
+	height: 340px;
+	width: 340px;
+	padding-left: 15px;
+	padding-right: 15px;
 	border-radius: 45px;
-
 	background: #ffffff;
-	margin: 30px 30px;
 }
 .ex-top {
 	padding: 10px 0px 10px 0px;
@@ -805,17 +931,30 @@ a {
 .ex-icons p {
 	color: black;
 	padding-left: 10px;
-	font-weight: 200;
+	font-size: 15px;
+	font-weight: 500;
 }
 .ex-icons span {
 	padding: 0 3px;
 }
 .ex-detail {
-	color: #999999;
 	margin: 5px 10px 15px 10px;
 }
+
+.ex-detail p {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	margin-left: inherit;
+	font-size: 18px;
+	font-weight: 100;
+	color: rgb(139, 136, 136);
+}
+
 .ex-detail h3 {
-	margin: 8px 0px 5px opx;
+	margin: inherit;
+	font-weight: 400;
+	margin-top: 36px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 18px;
 }
 
 /*-------Experience  end------*/
@@ -823,15 +962,20 @@ a {
 /*------ Footer start-----*/
 .footer-container {
 	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding-top: 60px;
+	padding-bottom: 60px;
 	background: #131034;
 	color: white;
 	bottom: 0;
 }
 /*-------changed margin to padding -----*/
 .foot {
-	padding: 80px;
-	text-align: center;
+	padding: 45px;
+	text-align: left;
 }
+
 .foot h3 {
 	font-size: 24px;
 	margin-bottom: 20px;
@@ -847,43 +991,58 @@ a {
 }
 .footer-btn {
 	background: #00bed1;
-	padding: 10px 18px;
+	width: 200px;
+	padding: 18px 32.6px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: white;
-	height: 46px;
-	width: 230px;
-	left: 0px;
-	top: 0px;
 	border-radius: 30px;
+}
+
+.footer-btn:hover {
+	background: gold;
 }
 
 .footer-btn li {
 	margin-top: 30px;
 }
+
+.get-updates {
+	width: 330px;
+}
 .get-updates input {
 	border: 0.5px solid #dddddd;
-	height: 46px;
-	width: 230px;
+	height: 50px;
+	width: 260px;
 	left: 1025px;
 	top: 253px;
+	text-align: center;
 	border-radius: 25px;
 	margin-bottom: 30px;
 	margin-top: 20px;
 	padding: 10px;
 }
 
+.get-updates p {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 .footer-btn2 {
 	background: #00bed1;
 	margin-top: 30px;
 	color: white;
 	height: 46px;
-	width: 253px;
 	left: 0px;
 	top: 0px;
 	border-radius: 30px;
-	padding: 15px 90px;
+	padding: 15px 103px;
 }
 .last-footer {
 	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
 	padding: 20px;
 	background-color: #131034;
 	border-top: #00bed1 1px solid;
@@ -899,17 +1058,15 @@ a {
 }
 /*-------changed margin to padding -----*/
 .address {
-	padding-right: 40px;
-	padding-left: 600px;
 	float: right;
 }
 
-footer-con {
+.footer-con {
 	margin: 0;
-	padding: 0;
 	position: absolute;
 	clear: both;
 	margin-bottom: -200px;
+	width: 100%;
 }
 .app {
 	margin: 0;
@@ -1387,11 +1544,11 @@ footer-con {
 }
 
 .flexbox-btn-1:hover {
-	background: orange;
+	background: gold;
 }
 
 .flexbox-btn-2:hover {
-	background: orange;
+	background: gold;
 }
 
 .flexbox-btn-2 {
@@ -1465,13 +1622,42 @@ footer-con {
 /*-------About header start -------*/
 
 #About-event {
-	/*margin: 40px 0 60px 0;*/
+	color: black;
+	font-size: 28px;
+	text-align: center;
+	width: auto;
+	display: block;
+	font-size: 28px;
+}
+
+#Experience-event {
 	color: black;
 	font-size: 28px;
 	text-align: center;
 	margin: auto;
+	padding-top: 100px;
+	padding-bottom: 70px;
 	width: auto;
 	display: block;
+	font-size: 28px;
+}
+
+#Experience-event h2 {
+	padding: 30px 60px;
+}
+#Experience-event ::before {
+	content: "";
+	height: 38px;
+	width: 10px;
+	background: linear-gradient(
+		to right,
+		#00bed1 0%,
+		#00bed1 50%,
+		#377faa 50%,
+		#377faa 100%
+	);
+	display: inline-block;
+	margin-right: 10px;
 }
 
 #About-event h2 {
@@ -1499,6 +1685,15 @@ footer-con {
 	align-items: center;
 	justify-content: center;
 }
+
+.about {
+	opacity: 0.9;
+	height: 120vh;
+	background: #f5f7f7;
+	margin-bottom: 30vh;
+	padding-left: 1%;
+}
+
 .about-1st {
 	height: auto;
 	width: 310px;

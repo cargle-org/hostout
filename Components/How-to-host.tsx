@@ -7,12 +7,12 @@ const HowToHost = () => {
 					<div id="Host-event">
 						<h2>How to host an event</h2>
 					</div>
-					<HostEventItem text="Click on host an event to get started" />
-					<HostEventItem text="Add an event title image or thumbnail" />
-					<HostEventItem text="Add a restaurant or event location" />
-					<HostEventItem text="Add event fees and food & drinks menu" />
-					<HostEventItem text="Create #tags for your event or send out invites" />
-					<HostEventItem text="Click on create and share your event link" />
+					<HostEventItem color="host-event-item" text="Click on host an event to get started" />
+					<HostEventItem color="host-event-item" text="Add an event title image or thumbnail" />
+					<HostEventItem color="host-event-item" text="Add a restaurant or event location" />
+					<HostEventItem color="host-event-item" text="Add event fees and food & drinks menu" />
+					<HostEventItem color="host-event-item" text="Create #tags for your event or send out invites" />
+					<HostEventItem color="host-event-item" text="Click on create and share your event link" />
 				</div>
 				<div className="host-logo">
 				</div>
