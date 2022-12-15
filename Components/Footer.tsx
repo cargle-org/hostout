@@ -14,7 +14,7 @@ const Footer = () => {
 			 <div className="footer-container">
 				<div className="foot">
 					<h3>Menu</h3>
-					<ul className="menu">
+					<ul className="menu-footer">
 						<li>
 							<a className="menu-item" href="#">
 								Home
@@ -40,7 +40,7 @@ const Footer = () => {
 
 				<div className="foot">
 					<h3>Follow Us</h3>
-					<ul className="menu">
+					<ul className="menu-footer">
 						<li>
 							<a className="menu-item" href="#">
 								<FontAwesomeIcon icon={faFacebook} /> Facebook
@@ -71,7 +71,7 @@ const Footer = () => {
 
 				<div className="foot">
 					<h3>Contact and Support</h3>
-					<ul className="menu">
+					<ul className="menu-footer">
 						<li>
 							<a className="menu-item" href="#">
 								Whatsapp

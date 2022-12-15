@@ -132,6 +132,21 @@ a {
 	cursor: pointer;
 	color: #aaaaaa;
 	margin-top: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu-footer {
+	width: 100px;
+	text-align: left;
+	cursor: pointer;
+	color: #aaaaaa;
+	margin-top: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: left;
+	flex-direction: column;
 }
 
 .menu-item {
@@ -153,6 +168,49 @@ a {
 .angle-down-icon {
 	font-size: 25px;
 }
+
+.drop__down {
+	position: absolute;
+	top: 80px;
+	left: 80%;
+	height: auto;
+	width: 20%;
+	background: white;
+	z-index: 999999999999999999;
+	border-radius: 5px;
+	padding-bottom: 20px;
+}
+
+.float {
+	position: absolute;
+	top: 16px;
+	left: 90%;
+}
+.drop__down__list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-decoration: none;
+	color: #757575;
+	font-size: 19px;
+	list-style-type: none;
+}
+
+.drop__down__item {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	text-decoration: none;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.drop__down__item:hover {
+	color: gold;
+	cursor: pointer;
+}
+
 #bell {
 	font-size: 20px;
 	margin-top: 10px;
@@ -168,27 +226,26 @@ a {
 
 /*-------Home page header starts here -------*/
 .flexbox-container {
-	height: 100vh;
+	height: 750px;
 	width: 100%;
-	background-color: #f5f7f7;
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 100px;
+	/* margin-top: 100px; */
 }
 
 .flexbox-1 {
 	height: inherit;
 	width: 50%;
-	background-color: #f7f5f6;
+	margin-top: 60px;
+	margin-bottom: 0;
 	justify-content: center;
 	align-items: left;
 	padding-left: 20px;
-	padding-top: 25vh;
+	/* padding-top: 100px; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	padding-left: 5%;
-	/* margin: 100px 20px 0px 20px; */
 }
 .flexbox-1 h1 {
 	font-size: 50px;
@@ -226,20 +283,27 @@ a {
 .flexbox-2 {
 	height: inherit;
 	width: 50%;
-	background: #df5499;
-	/* background-image: url("/hostout-frontend-tsx/header 2.PNG"); */
+	background-image: url("/hostout-frontend-tsx/bg-image.svg");
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media only screen and (max-width: 950px) {
+	.flexbox-container {
+		height: 1200px;
+	}
 	.flexbox-2 {
 		width: 100%;
+		height: 550px;
 		/* margin-top: 15vh; */
 	}
 
 	.flexbox-1 {
-		padding-bottom: 20vh;
 		width: 100%;
 		text-align: center;
+		height: 550px;
+		/* padding-bottom: 10vh; */
 	}
 
 	.hp-btn {
@@ -523,7 +587,7 @@ a {
 
 /*---------How to host --------*/
 #how-to-host {
-	height: 100vh;
+	height: 700px;
 	width: 100%;
 	background-image: url("/group-2.jpg");
 	background-size: cover;
@@ -544,7 +608,7 @@ a {
 	width: 50%;
 	min-width: 600px;
 	height: inherit;
-	padding-top: 12%;
+	padding-top: 150px;
 }
 
 #Host-event {
@@ -591,6 +655,11 @@ a {
 	padding-left: 30px;
 }
 
+.host-event-item-2 p {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: #333333;
+}
+
 .host-event-item-2 span {
 	color: #131034;
 }
@@ -613,33 +682,52 @@ a {
 	height: inherit;
 	min-width: 600px;
 	width: 50%;
-	padding-top: 12%;
+	padding-top: 20px;
 	background-color: #131031;
 	opacity: 0.9;
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.host-logo-style {
+	height: 120%;
+	width: 120%;
+	margin-left: 5%;
+}
+
+.attend-logo-style {
+	height: 100%;
+	width: 100%;
 }
 /*---------How to host end --------*/
 
 /*---------Attend --------*/
 #how-to-attend {
-	height: 100vh;
+	height: 900px;
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
+	/* background: transparent; */
 }
 
 .attend-logo {
-	background-color: #d1ce00;
-	height: inherit;
+	height: auto;
 	min-width: 600px;
 	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
 }
 
 .attend-event {
-	height: inherit;
 	min-width: 600px;
+	height: inherit;
 	width: 50%;
-	background: #aaaaaa;
+	background: transparent;
+	opacity: 0.8;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -648,7 +736,7 @@ a {
 
 #Attend-event {
 	/*margin: 40px 0 60px 0;*/
-	color: white;
+	color: black;
 	font-size: 28px;
 	margin: 5%;
 	width: 650px;
@@ -673,17 +761,46 @@ a {
 	margin-right: 10px;
 }
 
+@media only screen and (max-width: 549px) and (min-width: 0) {
+	.attend-logo {
+		padding-right: 10%;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.drop__down {
+		position: absolute;
+		top: 80px;
+		left: 0;
+		height: auto;
+		width: 100%;
+		padding-bottom: 10px;
+		padding-top: 10px;
+		border-top: 0.2px solid rgb(182, 178, 178);
+		border-bottom: 0.2px solid rgb(182, 178, 178);
+		border-radius: 0;
+	}
+
+	.drop__down__list {
+		padding-right: 30px;
+		color: #757575;
+	}
+}
+
 @media only screen and (max-width: 600px) and (min-width: 0) {
+	/* .about{
+		margin-bottom: 20vh;
+	} */
 	.host-event {
 		width: 100%;
 		min-width: 100%;
 	}
 
+	/* .attend-logo-x` */
+
 	.attend-event {
 		width: 100%;
 		min-width: 100%;
-		padding-bottom: 10vh;
-		padding-top: 10vh;
 		height: inherit;
 	}
 
@@ -691,17 +808,25 @@ a {
 		padding-left: 20px;
 	}
 
-	.address{
+	.address {
 		padding-left: 10%;
 	}
 	#how-to-attend {
-		width: 110%;
+		width: 100%;
 	}
 
 	#Attend-event {
 		padding-left: 1%;
 		width: 95%;
 		margin-top: 10vh;
+	}
+
+	.footer-container {
+		justify-content: left;
+	}
+
+	.flexbox-container {
+		margin-top: 100px;
 	}
 }
 @media only screen and (min-width: 1400px) {
@@ -717,13 +842,52 @@ a {
 		margin-right: 40px;
 	}
 }
+
+@media only screen and (max-width: 594px) {
+	.host-logo {
+		display: flex;
+		align-items: left;
+		justify-content: left;
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+
+	#how-to-attend {
+		height: 230px;
+	}
+
+	.attend-logo {
+		height: 400px;
+		padding-bottom: 40px;
+	}
+
+	.attend-event {
+		height: 500px;
+	}
+}
+
+/* attend-logo */
+@media only screen and (max-width: 480px) {
+	.attend-logo {
+		padding-right: 35%;
+	}
+}
+
+@media only screen and (max-width: 405px) {
+	.attend-logo {
+		padding-right: 65%;
+	}
+}
+
 @media only screen and (max-width: 1200px) {
 	#how-to-attend {
-		margin-top: 100vh;
+		margin-top: 720px;
+		margin-bottom: 700px;
 	}
 
 	.host-logo {
 		width: 100%;
+		height: auto;
 	}
 
 	.attend-logo {
@@ -742,23 +906,21 @@ a {
 	.attend-event .host-event-item-2 {
 		margin-left: 1%;
 	}
+}
 
-	.recommended {
-		margin-top: 100vh;
+@media only screen and (max-width: 600px) and (min-width: 387) {
+	.host-logo-style {
+		margin-right: 55vw;
+		height: 90%;
+		width: 90%;
 	}
 }
 
-@media only screen and (max-width: 948px) {
-	.about1 {
-		margin-top: 100vh;
-	}
-}
 @media only screen and (max-width: 600px) {
-	.attend-event {
-		width: 100%;
-		margin-left: -12%;
-		overflow-x: hidden;
-		margin-left: -9%;
+	.host-logo-style {
+		margin-right: 55vw;
+		height: 90%;
+		width: 90%;
 	}
 
 	#Attend-event {
@@ -771,6 +933,13 @@ a {
 	}
 }
 
+@media only screen and (max-width: 387px) and (min-width: 0) {
+	.host-logo-style {
+		margin-right: 90vw;
+		height: 80%;
+		width: 90%;
+	}
+}
 /* host-logo */
 
 /*---------Attend end --------*/
@@ -779,7 +948,6 @@ a {
 
 .about-container {
 	/* height: 100vh; */
-	background: #f5f7f7;
 	padding-top: 13vh;
 }
 
@@ -972,7 +1140,7 @@ a {
 }
 /*-------changed margin to padding -----*/
 .foot {
-	padding: 45px;
+	padding: 45px 50px;
 	text-align: left;
 }
 
@@ -1073,6 +1241,7 @@ a {
 	margin-bottom: 0;
 	padding: 0;
 	bottom: 0;
+	background-image: url("/hostout-frontend-tsx/bg-image.svg");
 }
 
 /*------ Footer end-----*/
@@ -1233,9 +1402,15 @@ a {
 	outline: none;
 	border: 0.1px solid #999999;
 }
+
+.form-event-price {
+	display: block;
+	width: 730px;
+}
+
 .form-event-price input {
 	height: 40px;
-	width: 500px;
+	width: 100%;
 	border-radius: 5px;
 	border: 0.1px solid #999999;
 	margin: 10px 0 10px 0;
@@ -1251,7 +1426,33 @@ a {
 }
 
 .person-name-info {
-	padding: 0 0 60px 0;
+	/* padding: 0 0 60px 0; */
+}
+
+.person-name-info-2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.person-name-info-2 input {
+	height: 40px;
+	width: 780px;
+	border-radius: 5px;
+	border: 0.1px solid #999999;
+	margin: 10px 0 10px 0;
+	outline: none;
+}
+.person-name-info-2 button {
+	height: 40px;
+	width: 100px;
+	border-radius: 25px;
+	background: #131034;
+	color: white;
+	border: none;
+	margin-left: 40px;
+	cursor: pointer;
 }
 
 .person-name-info input {
@@ -1270,6 +1471,7 @@ a {
 	color: white;
 	border: none;
 	margin-left: 40px;
+	cursor: pointer;
 }
 
 .person-container-info {
@@ -1319,9 +1521,17 @@ a {
 	padding-bottom: 60px;
 }
 
+.input-act-menu {
+	width: 100%;
+}
+
+.input-act-menu span {
+	width: 30%;
+}
+
 .input-act-menu input {
 	height: 40px;
-	width: 250px;
+	/* width: 70%; */
 	border-radius: 5px;
 	border: 0.1px solid #999999;
 	margin: 10px 0 10px 0;
@@ -1353,6 +1563,33 @@ a {
 	padding-bottom: 60px;
 }
 
+.set {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+}
+
+.set span {
+	flex: 0.15;
+	margin-top: 20px;
+	text-align: left;
+}
+
+.set input {
+	flex: 0.85;
+	padding-left: 20px;
+}
+
+.button {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 20px;
+}
+
+.button button {
+	cursor: pointer;
+}
 .event-location-description textarea {
 	height: 100px;
 	width: 100%px;
@@ -1361,14 +1598,25 @@ a {
 	margin: 10px 0 10px 0;
 	outline: none;
 }
+
+.input-events-image {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+}
+
 .input-events-image input {
-	height: 40px;
-	width: 250px;
+	display: flex;
+	align-items: center;
+	width: 500px;
+	height: 20px;
+	flex-wrap: wrap;
+	justify-content: center;
 	border-radius: 5px;
 	border: 0.1px solid #999999;
+	background-color: white;
 	margin: 10px 0 10px 0;
 	outline: none;
-	margin: 10px 20px 10px 0;
 }
 .input-event-button {
 	height: 40px;
@@ -1381,9 +1629,36 @@ a {
 #input-event-btn {
 	display: flex;
 	justify-content: center;
-	padding: 60px 0 60px 0;
+	width: 70%;
+	padding: 20px 0 20px 0;
 }
 
+#input-event-btn button {
+	cursor: pointer;
+}
+
+
+#input-event-btn button:hover {
+	color: gold;
+}
+
+.upload{
+	display: flex;
+	flex-direction: row;
+	width: 65%;
+	justify-content: space-between;
+}
+
+.upload button{
+	height: 40px;
+	width: 100px;
+	border-radius: 25px;
+	background: #131034;
+	color: white;
+	border: none;
+	margin-left: 40px;
+	cursor: pointer;
+}
 .formError {
 	padding: 5px 0 5px 5px;
 	width: 250px;
@@ -1495,6 +1770,7 @@ a {
 }
 #angle-down {
 	margin-left: -38px;
+	position: absolute;
 }
 /*------Navigation bar ends here -------*/
 
@@ -1688,9 +1964,9 @@ a {
 
 .about {
 	opacity: 0.9;
-	height: 120vh;
+	height: 800px;
 	background: #f5f7f7;
-	margin-bottom: 30vh;
+	/* margin-bottom: 30%; */
 	padding-left: 1%;
 }
 

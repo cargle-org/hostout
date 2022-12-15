@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Homehead = () => {
+	const image = "/h1-image.png";
 	return (
 		<div className="flexbox-container">
-			<div className="flexbox-1 flexbox-item">
+			<div className="flexbox-1">
 				<h1 className="flexbox-item-text">
 					Don't stay <span className="flexbox-item-span">bored</span>, go for{" "}
 				</h1>
@@ -25,7 +27,10 @@ const Homehead = () => {
 					</div>
 				</div>
 			</div>
-			<div className="flexbox-2"></div>
+			{/* <div className="flexbox-2" style={{backgroundImage: `url(${image})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", overflow: "hidden", backgroundPosition:"center center"}}></div> */}
+			<div className="flexbox-2">
+				<Image src={image} width={600} height={700} className="nav-bar-image" />
+			</div>
 		</div>
 	);
 };

@@ -9,7 +9,9 @@ import { text } from "stream/consumers";
 import AppContext from "../context/AppContext";
 import { success, error } from "../helpers/Alert";
 import axios from "axios";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 import CloudinaryUpload from "../middlewares/CloudinaryUpload";
+import { IconButton } from "@mui/material";
 
 interface FormInputs {
 	singleErrorInput: string;
@@ -36,6 +38,8 @@ export const Eventsinput = () => {
 	const [activityList, setActivityList] = useState([]);
 	const [eventImages, setEventImages] = useState([]);
 	const [showCreateBtn, setShowCreateBtn] = useState(false);
+	const [files, setFiles] = useState([]);
+	const [selectedFiles, setSelectedFiles] = useState(null);
 
 	const [newEvent, setNewEvent] = useState({
 		name: "",
@@ -250,8 +254,8 @@ export const Eventsinput = () => {
 								placeholder="Enter Event Name"
 								id="name"
 								name="name"
-                className="form-event-input"
-                style={{width: "100%"}}
+								className="form-event-input"
+								style={{ width: "100%" }}
 								onChange={onchangeHandler}
 								required
 								defaultValue={newEvent.name}
@@ -267,8 +271,8 @@ export const Eventsinput = () => {
 								type="date"
 								placeholder="Enter Event Title"
 								id="eventName"
-                className="form-event-input"
-                style={{width: "100%", paddingRight: "2%"}}
+								className="form-event-input"
+								style={{ width: "100%", paddingRight: "2%" }}
 							/>
 
 							<ErrorMessage
@@ -287,8 +291,8 @@ export const Eventsinput = () => {
 								type="text"
 								placeholder="Enter Event Location"
 								id="eventName"
-                className="form-event-input"
-                style={{width: "100%"}}
+								className="form-event-input"
+								style={{ width: "100%" }}
 							/>
 
 							<ErrorMessage
@@ -307,8 +311,8 @@ export const Eventsinput = () => {
 								type="text"
 								placeholder="Enter Event Program"
 								id="eventName"
-                className="form-event-input"
-                style={{width: "100%"}}
+								className="form-event-input"
+								style={{ width: "100%" }}
 							/>
 
 							<ErrorMessage
@@ -362,8 +366,7 @@ export const Eventsinput = () => {
 									placeholder="Amount"
 									id="event_fee"
 									name="event_fee"
-                  className="form-event-input"
-                  style={{width: "642px"}}
+									className="form-event-input"
 									onChange={onchangeHandler}
 									required
 									defaultValue={newEvent.event_fee}
@@ -380,15 +383,22 @@ export const Eventsinput = () => {
 									placeholder="Enter tag name"
 									id="tags"
 									name="tags"
-                  style={{width: "83%"}}
-                  className="form-event-input"
+									style={{ width: "83%" }}
+									className="form-event-input"
 									required
 								/>
 								<button onClick={eventTagsHandler}>Add tag</button>
 								<br />
-								<ul style={{display: "flex", flexWrap: "wrap", width: "100%"}}>
+								<ul
+									style={{ display: "flex", flexWrap: "wrap", width: "100%" }}
+								>
 									{eventTags.map((event, i) => (
-										<li key={i} style={{marginLeft: "5%", listStyleType: "none"}}>#{event}</li>
+										<li
+											key={i}
+											style={{ marginLeft: "5%", listStyleType: "none" }}
+										>
+											#{event}
+										</li>
 									))}
 								</ul>
 							</div>
@@ -397,13 +407,13 @@ export const Eventsinput = () => {
 						{/* menu */}
 						<div className="person-container-info">
 							<h3>Add to event menu</h3>
-							<div className="person-name-info">
+							<div className="person-name-info-2">
 								<input
 									type="text"
 									placeholder="Enter menu item name"
-									id="menu"
-									name="menu"
-                  className="form-event-input"
+									id="tags"
+									name="tags"
+									className="form-event-input"
 									required
 								/>
 								<button onClick={eventMenuHandler}>Add to menu</button>
@@ -417,59 +427,70 @@ export const Eventsinput = () => {
 						</div>
 
 						{/* Additional activities */}
-						<div>
+						<div className="person-container-info">
 							<h3>Add the availabe lists of activities</h3>
 							<div className="input-act-menu">
 								{/* activity_name */}
-								<span>Activity name</span>
-								<input
-									type="text"
-									placeholder="enter activity here"
-									id="activity_name"
-									name="activity_name"
-									required
-								/>
-								<br />
+
+								<div className="set">
+									<span>Activity name</span>
+									<input
+										type="text"
+										placeholder="Enter activity here"
+										id="activity_name"
+										name="activity_name"
+										required
+									/>
+								</div>
 
 								{/* description */}
-								<span>Description</span>
-								<input
-									type="textarea"
-									placeholder="enter description"
-									id="description"
-									name="description"
-									required
-								/>
-								<br />
+								<div className="set">
+									<span>Description</span>
+									<input
+										type="textarea"
+										placeholder="enter description"
+										id="description"
+										name="description"
+										required
+									/>
+								</div>
 
 								{/* price */}
-								<span>Amount</span>
-								<input
-									type="text"
-									placeholder="enter price"
-									id="price"
-									name="price"
-									required
-								/>
-								<br />
-								<button onClick={onActivitiesChangeHandler}>
-									Add activity
-								</button>
+								<div className="set">
+									<span>Amount</span>
+									<input
+										type="text"
+										placeholder="enter price"
+										id="price"
+										name="price"
+										required
+									/>
+								</div>
+								<div className="button">
+									<button onClick={onActivitiesChangeHandler}>
+										Add activity
+									</button>
+								</div>
 							</div>
 						</div>
 
 						{/* image */}
-						<div className="input-events-image">
-							<h3>event images / flyer</h3>
-							<input
-								type="file"
-								placeholder="insert flyer / image"
-								id="image"
-								name="image"
-								required
-							/>{" "}
-							<span>Attach image files</span>
-							<button onClick={onMediaChangeHandler}>Add Image</button>
+						<div
+							className="input-events-image"
+						>
+							<h3>Upload images and flyers</h3>
+							<div className="upload">
+								<input
+									type="file"
+									placeholder="insert flyer / image"
+									id="image"
+									name="image"
+									multiple
+									required
+								/>
+								<button onClick={onMediaChangeHandler}>Add Image</button>
+							</div>
+
 							<br />
 							<ul>
 								{eventImages.map((event, i) => (
@@ -482,7 +503,11 @@ export const Eventsinput = () => {
 							{newEventLoading ? (
 								""
 							) : (
-								<button className="input-event-button" type="submit">
+								<button
+									className="input-event-button"
+									type="submit"
+									style={{ width: "100%" }}
+								>
 									Create Event
 								</button>
 							)}
@@ -490,15 +515,6 @@ export const Eventsinput = () => {
 					</div>
 				</div>
 			</form>
-			<div id="About-event">
-				<h2>People&apos;s experience</h2>
-			</div>
-			<div className="about-container">
-				<Experience />
-				<Experience />
-				<Experience />
-			</div>
-
 			<Footer />
 		</div>
 	);

@@ -20,10 +20,11 @@ import Footer from "../Components/Footer";
 import Link from "next/link";
 import AddCard from "../Components/AddCard";
 import ExperienceSection from "../Components/ExperienceSection";
+import image from "../public/bg-image.svg";
 
 const Home: NextPage = () => {
 	const { topbarTitle } = useContext(AppContext);
-
+	const backgroundImage = "/bg-image.svg"
 	return (
 		<div style={{ overflow: "hidden" }}>
 			<Head>
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
 				<meta name="description" content="Host and find events near you" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="app">
+			<div className="app" style={{backgroundImage: `url(${backgroundImage})`}}>
 				<Navbar />
 				<Homehead />
 				<div className="about1">
@@ -45,7 +46,7 @@ const Home: NextPage = () => {
 						<Card image="/group-3.jpg" />
 						<AddCard />
 					</div>
-					<div className="about-container">
+					<div className="about-container" style={{backgroundImage: `url(${backgroundImage})`}}>
 						<div id="About-event">
 							<h2>All about Hostout</h2>
 						</div>
@@ -97,8 +98,7 @@ const Home: NextPage = () => {
 					</div>
 				</div>
 				<Footer /> 
-			</div>
-			{/* <Footer /> */}
+			</div> 
 		</div>
 	);
 };
