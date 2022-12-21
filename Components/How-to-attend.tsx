@@ -22,16 +22,16 @@ const HowToAttend = () => {
 			style={{ backgroundImage: `url(${backgroundImage})` }}
 		>
 			<div className="attend-logo">
-				{width > 594 && (
-					<Image
-						src={image}
-						alt=""
-						width={600}
-						height={700}
-						className="nav-bar-image"
-					/>
-				)}
-				{width < 595 && width >= 444 && (
+				{/* {width > 594 && ( */}
+				<Image
+					src={image}
+					alt=""
+					width={600}
+					height={700}
+					className="nav-bar-image"
+				/>
+				{/* )} */}
+				{/* {width < 595 && width >= 444 && (
 					<Image
 						src={image}
 						width={400}
@@ -48,7 +48,7 @@ const HowToAttend = () => {
 						alt=""
 						className="nav-bar-image"
 					/>
-				)}
+				)} */}
 			</div>
 			<div className="attend-event">
 				<div id="Attend-event">
