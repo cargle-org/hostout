@@ -7,7 +7,7 @@ const Homehead = () => {
 		<div className="flexbox-container">
 			<div className="flexbox-1">
 				<h1 className="flexbox-item-text">
-					Don't stay <span className="flexbox-item-span">bored</span>, go for{" "}
+					Don&apos;t stay <span className="flexbox-item-span">bored</span>, go for{" "}
 				</h1>
 				<h1 className="flexbox-item-text-2">
 					<span className="flexbox-item-span">Events</span> &{" "}

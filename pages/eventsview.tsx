@@ -16,6 +16,9 @@ import { useEffect, useState } from 'react';
 import Etag from '../Components/etag';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
 
 interface FormInputs {
   singleErrorInput: string
@@ -403,9 +406,10 @@ const onSubmit:any = (data: FormInputs) => {
         <h2>Peoples Experience </h2>
       </div>
       <div className='about-container'>
-        <Experience />
-        <Experience />
-        <Experience />
+      <Experience  star5={<StarIcon fontSize="small"/>} name="Jenifer Afolayan" image="/experience-pic-2.jpg"/>
+			<Experience  star5={<StarHalfIcon fontSize="small"/>} name="Chike Bright" image="/experience-pic-5.jpg"/>
+			<Experience  star5={<StarBorderIcon fontSize="small"/>} name="Ayo Williams" image="/experience-pic-3.jpg"/>
+            
       </div>
       <Footer />
     </div>

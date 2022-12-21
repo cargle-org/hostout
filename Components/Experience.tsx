@@ -25,7 +25,7 @@ const Experience = ({ star5, name, image }) => {
 					<div className="ex-icons">
 						{stars.map((star) => {
 							return (
-								<span>
+								<span key={star}>
 									<StarIcon fontSize="small"/>
 								</span>
 							);

@@ -230,7 +230,6 @@ a {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	/* margin-top: 100px; */
 }
 
 .flexbox-1 {
@@ -241,7 +240,6 @@ a {
 	justify-content: center;
 	align-items: left;
 	padding-left: 20px;
-	/* padding-top: 100px; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -254,12 +252,10 @@ a {
 	margin: 50px 0;
 }
 
-/* .hp-btn {
-	/* margin: 20px; */
-/* } */
-*/ .flexbox-1 span {
+.flexbox-1 span {
 	color: #00bed1;
 }
+
 .flexbox-1-btn {
 	padding: 10px 15px;
 	background: #131034;
@@ -303,7 +299,6 @@ a {
 		width: 100%;
 		text-align: center;
 		height: 550px;
-		/* padding-bottom: 10vh; */
 	}
 
 	.hp-btn {
@@ -1637,19 +1632,18 @@ a {
 	cursor: pointer;
 }
 
-
 #input-event-btn button:hover {
 	color: gold;
 }
 
-.upload{
+.upload {
 	display: flex;
 	flex-direction: row;
 	width: 65%;
 	justify-content: space-between;
 }
 
-.upload button{
+.upload button {
 	height: 40px;
 	width: 100px;
 	border-radius: 25px;
