@@ -24,7 +24,7 @@ import image from "../public/bg-image.svg";
 
 const Home: NextPage = () => {
 	const { topbarTitle } = useContext(AppContext);
-	const backgroundImage = "/bg-image.svg"
+	const backgroundImage = "/bg-image.svg";
 	return (
 		<div style={{ overflow: "hidden" }}>
 			<Head>
@@ -32,7 +32,10 @@ const Home: NextPage = () => {
 				<meta name="description" content="Host and find events near you" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="app" style={{backgroundImage: `url(${backgroundImage})`}}>
+			<div
+				className="app"
+				style={{ backgroundImage: `url(${backgroundImage})` }}
+			>
 				<Navbar />
 				<Homehead />
 				<div className="about1">
@@ -46,7 +49,10 @@ const Home: NextPage = () => {
 						<Card image="/group-3.jpg" />
 						<AddCard />
 					</div>
-					<div className="about-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+					<div
+						className="about-container"
+						style={{ backgroundImage: `url(${backgroundImage})` }}
+					>
 						<div id="About-event">
 							<h2>All about Hostout</h2>
 						</div>
@@ -93,12 +99,11 @@ const Home: NextPage = () => {
 						<div id="Experience-event">
 							<h2>People&apos;s experience</h2>
 						</div>
-							<ExperienceSection/>
-						
+						<ExperienceSection />
 					</div>
 				</div>
-				<Footer /> 
-			</div> 
+				<Footer />
+			</div>
 		</div>
 	);
 };

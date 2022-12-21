@@ -184,7 +184,7 @@ a {
 .float {
 	position: absolute;
 	top: 16px;
-	left: 90%;
+	left: 80%;
 }
 .drop__down__list {
 	display: flex;
@@ -795,7 +795,8 @@ a {
 	.attend-event {
 		width: 100%;
 		min-width: 100%;
-		height: inherit;
+		/* padding-top: 100px;
+		padding-bottom: 250px; */
 	}
 
 	.host-event-item-2 {
@@ -847,16 +848,18 @@ a {
 	}
 
 	#how-to-attend {
-		height: 230px;
+		height: 500px;
 	}
 
 	.attend-logo {
-		height: 400px;
+		height: 500px;
 		padding-bottom: 40px;
 	}
 
 	.attend-event {
+		margin-top: 100px;
 		height: 500px;
+		overflow-y: hidden;
 	}
 }
 
