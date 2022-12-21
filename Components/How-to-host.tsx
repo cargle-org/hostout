@@ -8,7 +8,8 @@ const HowToHost = () => {
 		const width = hasWindow ? window.innerWidth : null;
 		return width;
 	}
-	const [width, setWidth] = useState(getWindowDimensions());
+	const [width, setWidth] = useState(getWindowDimensions() || 594);
+	console.log(width);
 	useEffect(() => {
 		window.addEventListener("resize", async () => {
 			await setWidth(window.innerWidth);
@@ -48,16 +49,7 @@ const HowToHost = () => {
 					/>
 				</div>
 				<div className="host-logo">
-					{width > 594 && (
-						<Image
-							src={image}
-							width={600}
-							height={700}
-							alt=""
-							className="nav-bar-image"
-						/>
-					)}
-					{width < 595 && width >= 444 && (
+					{width < 594 ? (
 						<Image
 							src={image}
 							width={400}
@@ -65,12 +57,11 @@ const HowToHost = () => {
 							alt=""
 							className="nav-bar-image"
 						/>
-					)}
-					{width < 444 && (
+					) : (
 						<Image
 							src={image}
-							width={300}
-							height={450}
+							width={600}
+							height={700}
 							alt=""
 							className="nav-bar-image"
 						/>

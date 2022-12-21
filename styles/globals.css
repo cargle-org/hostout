@@ -184,8 +184,9 @@ a {
 .float {
 	position: absolute;
 	top: 16px;
-	left: 80%;
+	left: 90%;
 }
+
 .drop__down__list {
 	display: flex;
 	justify-content: center;
