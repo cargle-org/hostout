@@ -10,7 +10,7 @@ const HowToAttend = () => {
 		const width = hasWindow ? window.innerWidth : null;
 		return width;
 	}
-	const [width, setWidth] = useState(getWindowDimensions());
+	const [width, setWidth] = useState(getWindowDimensions() || 600);
 	useEffect(() => {
 		window.addEventListener("resize", async () => {
 			await setWidth(window.innerWidth);
@@ -25,6 +25,7 @@ const HowToAttend = () => {
 				{width > 594 && (
 					<Image
 						src={image}
+						alt=""
 						width={600}
 						height={700}
 						className="nav-bar-image"
@@ -35,6 +36,7 @@ const HowToAttend = () => {
 						src={image}
 						width={400}
 						height={500}
+						alt=""
 						className="nav-bar-image"
 					/>
 				)}
@@ -43,6 +45,7 @@ const HowToAttend = () => {
 						src={image}
 						width={300}
 						height={400}
+						alt=""
 						className="nav-bar-image"
 					/>
 				)}
