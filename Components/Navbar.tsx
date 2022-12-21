@@ -106,8 +106,9 @@ const Navbar = () => {
 					{width < 601 ? (
 						<Image
 							src={image}
-							width={500}
+							width={550}
 							height={500}
+							alt=""
 							className="nav-bar-image"
 						/>
 					) : (
@@ -115,6 +116,7 @@ const Navbar = () => {
 							src={image}
 							width={200}
 							height={300}
+							alt=""
 							className="nav-bar-image"
 						/>
 					)}
@@ -214,15 +216,35 @@ const Navbar = () => {
 			{active && (
 				<div className="drop__down">
 					<ul className="drop__down__list">
-						<li className="drop__down__item"><Link href="/">Home</Link></li>
-						{vanish.avater === true && <li className="drop__down__item">Profile</li>}
-						{vanish.hangouts === true && <li className="drop__down__item">Trending</li>}
-						{vanish.trending === true && <li className="drop__down__item"><Link href="/eventspage">Hangouts</Link></li>}
-						{vanish.host === true && <li className="drop__down__item"><Link href="/eventsinput">Host event</Link></li>}
-						{vanish.bell === true && <li className="drop__down__item">Notification</li>}
+						<li className="drop__down__item">
+							<Link href="/">Home</Link>
+						</li>
+						{vanish.avater === true && (
+							<li className="drop__down__item">Profile</li>
+						)}
+						{vanish.hangouts === true && (
+							<li className="drop__down__item">Trending</li>
+						)}
+						{vanish.trending === true && (
+							<li className="drop__down__item">
+								<Link href="/eventspage">Hangouts</Link>
+							</li>
+						)}
+						{vanish.host === true && (
+							<li className="drop__down__item">
+								<Link href="/eventsinput">Host event</Link>
+							</li>
+						)}
+						{vanish.bell === true && (
+							<li className="drop__down__item">Notification</li>
+						)}
 						<li className="drop__down__item">Join Waitlist</li>
-						<li className="drop__down__item"><Link href="/login">Sign in</Link></li>
-						<li className="drop__down__item"><Link href="/register">Sign up</Link></li>
+						<li className="drop__down__item">
+							<Link href="/login">Sign in</Link>
+						</li>
+						<li className="drop__down__item">
+							<Link href="/register">Sign up</Link>
+						</li>
 					</ul>
 				</div>
 			)}

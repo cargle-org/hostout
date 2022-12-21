@@ -10,7 +10,7 @@ const HowToAttend = () => {
 		const width = hasWindow ? window.innerWidth : null;
 		return width;
 	}
-	const [width, setWidth] = useState(getWindowDimensions() || 600);
+	const [width, setWidth] = useState(getWindowDimensions());
 	useEffect(() => {
 		window.addEventListener("resize", async () => {
 			await setWidth(window.innerWidth);

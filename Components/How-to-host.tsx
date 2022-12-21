@@ -53,6 +53,7 @@ const HowToHost = () => {
 							src={image}
 							width={600}
 							height={700}
+							alt=""
 							className="nav-bar-image"
 						/>
 					)}
@@ -61,6 +62,7 @@ const HowToHost = () => {
 							src={image}
 							width={400}
 							height={500}
+							alt=""
 							className="nav-bar-image"
 						/>
 					)}
@@ -69,6 +71,7 @@ const HowToHost = () => {
 							src={image}
 							width={300}
 							height={450}
+							alt=""
 							className="nav-bar-image"
 						/>
 					)}
