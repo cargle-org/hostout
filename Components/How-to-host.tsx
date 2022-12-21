@@ -48,33 +48,33 @@ const HowToHost = () => {
 					/>
 				</div>
 				<div className="host-logo">
-					{width > 594 && (
-						<Image
-							src={image}
-							width={600}
-							height={700}
-							alt=""
-							className="nav-bar-image"
-						/>
-					)}
-					{width < 595 && width >= 444 && (
-						<Image
-							src={image}
-							width={400}
-							height={500}
-							alt=""
-							className="nav-bar-image"
-						/>
-					)}
-					{width < 444 && (
-						<Image
-							src={image}
-							width={300}
-							height={450}
-							alt=""
-							className="nav-bar-image"
-						/>
-					)}
+					{/* {width > 594 && ( */}
+					<Image
+						src={image}
+						width={600}
+						height={700}
+						alt=""
+						className="nav-bar-image"
+					/>
+					{/* // )}
+					// {width < 595 && width >= 444 && ( */}
+					{/* // 	<Image */}
+					{/* // 		src={image}
+					// 		width={400}
+					// 		height={500}
+					// 		alt=""
+					// 		className="nav-bar-image" */}
+					{/* // 	/>
+					// )} */}
+					{/* // {width < 444 && ( */}
+					{/* // 	<Image */}
+					{/* // 		src={image}
+					// 		width={300}
+					// 		height={450}
+					// 		alt=""
+					// 		className="nav-bar-image"
+					// 	/>
+					// )} */}
 				</div>
 			</div>
 			<br></br>
