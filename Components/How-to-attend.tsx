@@ -17,30 +17,33 @@ const HowToAttend = () => {
 		});
 	}, []);
 	return (
-		<div
-			id="how-to-attend"
-			style={{ backgroundImage: `url(${backgroundImage})` }}
-		>
-			<div className="attend-logo">
+		<div id="how-to-attend">
+			<div
+				className="attend-logo"
+				style={{ backgroundImage: `url(${backgroundImage})` }}
+			>
 				{width < 594 ? (
 					<Image
 						src={image}
 						width={400}
-						height={500}
+						height={400}
 						alt=""
 						className="nav-bar-image"
 					/>
 				) : (
 					<Image
 						src={image}
-						width={600}
+						width={700}
 						height={700}
 						alt=""
 						className="nav-bar-image"
 					/>
 				)}
 			</div>
-			<div className="attend-event">
+			<div
+				className="attend-event"
+				style={{ backgroundImage: `url(${backgroundImage})` }}
+			>
 				<div id="Attend-event">
 					<h2>How to attend an event</h2>
 				</div>

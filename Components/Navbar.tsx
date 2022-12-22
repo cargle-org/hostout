@@ -99,6 +99,7 @@ const Navbar = () => {
 			});
 		setActive(false);
 	}, [width]);
+	console.log(active);
 	return (
 		<>
 			<div className="nav-bar">
@@ -213,7 +214,7 @@ const Navbar = () => {
 					</div>
 				)}
 			</div>
-			{active && (
+			{active ? (
 				<div className="drop__down">
 					<ul className="drop__down__list">
 						<li className="drop__down__item">
@@ -247,6 +248,8 @@ const Navbar = () => {
 						</li>
 					</ul>
 				</div>
+			) : (
+				""
 			)}
 		</>
 	);
