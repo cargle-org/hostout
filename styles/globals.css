@@ -182,7 +182,7 @@ a {
 }
 
 .float {
-	position: absolute;
+	position: fixed;
 	top: 16px;
 	left: 90%;
 }
@@ -787,7 +787,7 @@ a {
 	}
 
 	.drop__down__list {
-		color: #757575;
+		color: #ffffff;
 	}
 }
 
