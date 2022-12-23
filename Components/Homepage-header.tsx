@@ -33,7 +33,7 @@ const Homehead = () => {
 				<Image
 					alt=""
 					src={image}
-					width={600}
+					width={700}
 					height={700}
 					className="nav-bar-image"
 				/>

@@ -104,23 +104,13 @@ const Navbar = () => {
 		<>
 			<div className="nav-bar">
 				<Link href="#">
-					{width < 601 ? (
-						<Image
-							src={image}
-							width={550}
-							height={500}
-							alt=""
-							className="nav-bar-image"
-						/>
-					) : (
-						<Image
-							src={image}
-							width={200}
-							height={300}
-							alt=""
-							className="nav-bar-image"
-						/>
-					)}
+					<Image
+						src={image}
+						width={550}
+						height={500}
+						alt=""
+						className="nav-bar-image"
+					/>
 				</Link>
 				{vanish.search === false && (
 					<div className="nav-form">
