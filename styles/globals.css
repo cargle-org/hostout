@@ -158,7 +158,7 @@ a {
 }
 
 .menu-icon {
-	font-size: 60px;
+	font-size: 40px;
 }
 .angle-down {
 	margin: 16px 10px 0px 15px;
@@ -183,8 +183,8 @@ a {
 
 .float {
 	position: fixed;
-	top: 16px;
-	right: 10%;
+	top: 20px;
+	right: 5%;
 }
 
 .drop__down__list {
